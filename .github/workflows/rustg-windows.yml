@@ -27,7 +27,7 @@ jobs:
         run: |
           "CARGO_HOME=$env:RUNNER_TEMP/rustg-cargo" >> $env:GITHUB_ENV
           "RUSTUP_HOME=$env:RUNNER_TEMP/rustg-rustup" >> $env:GITHUB_ENV
-      - uses: dtolnay/rust-toolchain@1.93
+      - uses: dtolnay/rust-toolchain@1.120
         with:
           toolchain: 1.93.1
           targets: i686-pc-windows-msvc
