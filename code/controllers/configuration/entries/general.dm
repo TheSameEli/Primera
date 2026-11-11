@@ -1,3 +1,7 @@
+/// Enables local TGUI dictation. Windows clients require microphone permission support.
+/datum/config_entry/flag/tgui_say_speech
+
+
 /// if autoadmin is enabled
 /datum/config_entry/flag/autoadmin
 	protection = CONFIG_ENTRY_LOCKED

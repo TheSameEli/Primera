@@ -9,10 +9,11 @@
  * Returns:
  * string - A JSON encoded message to open the modal.
  */
-/client/proc/tgui_say_create_open_command(channel)
-	var/message = TGUI_CREATE_MESSAGE("open", list(
-		channel = channel,
-	))
+/client/proc/tgui_say_create_open_command(channel, dictation = FALSE)
+	var/list/payload = list(channel = channel)
+	if(dictation)
+		payload["dictation"] = TRUE
+	var/message = TGUI_CREATE_MESSAGE("open", payload)
 	return "\".output tgui_say.browser:update [message]\""
 
 /**
@@ -75,6 +76,9 @@
 		"lightMode" = client.prefs?.read_preference(/datum/preference/toggle/tgui_say_light_mode),
 		"scale" = client.prefs?.read_preference(/datum/preference/toggle/ui_scale),
 		"maxLength" = max_length,
+		"speechEnabled" = CONFIG_GET(flag/tgui_say_speech),
+		"speechKeys" = client.prefs?.key_bindings["Dictation"],
+		"speechMicrophone" = client.prefs?.read_preference(/datum/preference/text/speech_microphone),
 	))
 
 	stop_thinking()
@@ -122,6 +126,17 @@
  * and delegates actions.
  */
 /datum/tgui_say/proc/on_message(type, payload)
+	if(type == "speech-device" && istext(payload?["name"]))
+		if(client.prefs.update_preference(GLOB.preference_entries[/datum/preference/text/speech_microphone], payload["name"]))
+			client.prefs.save_preferences()
+			SStgui.update_uis(client.prefs)
+		return TRUE
+	if(type == "speech-model" && CONFIG_GET(flag/tgui_say_speech))
+		var/datum/asset/model = get_asset_datum(/datum/asset/simple/tgui_speech)
+		model.send(client)
+		var/list/mappings = model.get_url_mappings()
+		window.send_message("speech-model", list("url" = mappings["vosk-ru.tar.gz"]))
+		return TRUE
 	if(type == "ready")
 		load()
 		return TRUE
@@ -145,4 +160,19 @@
 	if (type == "entry" || type == "force" || type == "save")
 		handle_entry(type, payload)
 		return TRUE
+	return FALSE
+
+/datum/asset/simple/tgui_speech
+	assets = list("vosk-ru.tar.gz" = 'html/speech/vosk-model-small-ru-0.22.tar.gz')
+
+/datum/preference_middleware/offline_speech
+	action_delegations = list("speech_settings" = PROC_REF(open_settings))
+
+/datum/preference_middleware/offline_speech/proc/open_settings(list/params, mob/user)
+	if(user.client?.prefs != preferences)
+		return FALSE
+	if(!CONFIG_GET(flag/tgui_say_speech))
+		to_chat(user, span_warning("Диктовка отключена на этом сервере."))
+		return FALSE
+	user.client.tgui_say?.window.send_message("speech-settings")
 	return FALSE

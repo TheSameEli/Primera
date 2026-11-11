@@ -1,6 +1,29 @@
 @use 'sass:color';
 @use './colors.scss';
 
+.speech-panel {
+  box-sizing: border-box;
+  height: 100%;
+  overflow: auto;
+  padding: 16px;
+  color: #e2e8ef;
+  background: #18232d;
+  font: 14px/1.45 'Segoe UI', sans-serif;
+  h2 { margin: 0 0 12px; font-size: 20px; }
+  label { display: block; margin: 10px 0; }
+  select, textarea, progress, meter { display: block; box-sizing: border-box; width: 100%; margin: 6px 0; }
+  select, button, textarea { padding: 7px; color: #e2e8ef; background: #263b4b; border: 1px solid #607b8c; border-radius: 4px; }
+  button { cursor: pointer; }
+  button:disabled { opacity: 0.5; cursor: default; }
+  textarea { min-height: 65px; resize: none; }
+  progress { height: 15px; }
+  .speech-actions { display: flex; gap: 8px; }
+}
+
+.speech-level { margin: 12px 0; }
+.speech-level-track { height: 16px; margin: 6px 0; border: 1px solid #607b8c; border-radius: 4px; background: #0b1219; overflow: hidden; }
+.speech-level-fill { height: 100%; min-width: 0; background: linear-gradient(90deg, #35ba80, #c7d54b); transition: width 60ms linear; }
+
 @keyframes shine {
   from {
     background-position-x: -220px;
@@ -83,4 +106,17 @@
   color: var(--color);
   border: none;
   outline: none;
+}
+
+.content.content-speech {
+  grid-template-rows: minmax(100px, 1fr) 36px;
+  .textarea { line-height: 20px; min-height: 100px; }
+  .button { align-self: start; }
+}
+.speech-hint {
+  grid-column: 1 / -1;
+  align-self: center;
+  color: #c4ccd6;
+  font: 12px/16px 'Segoe UI', sans-serif;
+  padding: 0 4px;
 }

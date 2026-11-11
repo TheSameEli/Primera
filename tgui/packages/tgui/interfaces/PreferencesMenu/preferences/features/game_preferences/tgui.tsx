@@ -1,4 +1,22 @@
+import { useBackend } from 'tgui/backend';
+import { Button } from 'tgui-core/components';
+import type { Feature } from '../base';
 import { CheckboxInput, type FeatureToggle } from '../base';
+
+export const speech_microphone: Feature<string> = {
+  name: 'Диктовка — микрофон и проверка',
+  category: 'Звук',
+  description:
+    'Офлайн-распознавание речи. Выбор микрофона и тест без отправки в чат.',
+  component: ({ value }) => {
+    const { act } = useBackend();
+    return (
+      <Button icon="microphone" onClick={() => act('speech_settings')}>
+        {value || 'Настроить микрофон'}
+      </Button>
+    );
+  },
+};
 
 export const tgui_fancy: FeatureToggle = {
   name: 'Включить красивый TGUI',

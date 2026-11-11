@@ -1,5 +1,10 @@
 # You can use the "$include" directive to split your configs however you want
 
+# TGUI dictation: T to type; Shift+T to start/stop and send; Escape to cancel.
+# Requires BYOND 516/WebView2, microphone permission and the bundled Vosk model.
+# Model is sent on first use; audio stays on the player's computer.
+TGUI_SAY_SPEECH
+
 $include game_options.txt
 $include dbconfig.txt
 $include comms.txt

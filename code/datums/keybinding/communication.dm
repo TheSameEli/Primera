@@ -18,6 +18,23 @@
 	winset(user, SKIN_TGUISAY_BROWSER, "focus=true")
 	return TRUE
 
+/// Local speech recognition, using the same TGUI field and speech submission as Say.
+/datum/keybinding/client/communication/dictation
+	hotkey_keys = list("ShiftT")
+	name = "Dictation"
+	full_name = "Диктовка: начать / отправить"
+	keybind_signal = COMSIG_KB_CLIENT_DICTATION_DOWN
+
+/datum/keybinding/client/communication/dictation/down(client/user, turf/target, mousepos_x, mousepos_y)
+	. = ..()
+	if(.)
+		return
+	if(!CONFIG_GET(flag/tgui_say_speech) || !user.prefs.read_preference(/datum/preference/toggle/tgui_input))
+		return FALSE
+	winset(user, null, "command=[user.tgui_say_create_open_command(SAY_CHANNEL, TRUE)];")
+	winset(user, SKIN_TGUISAY_BROWSER, "focus=true")
+	return TRUE
+
 /datum/keybinding/client/communication/radio
 	hotkey_keys = list("Y")
 	name = RADIO_CHANNEL

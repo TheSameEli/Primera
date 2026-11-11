@@ -1,3 +1,7 @@
+> Эта ветка содержит офлайн-диктовку для **SpaceStation220/Primera**.
+> [Установка на сервер и настройка для игрока](html/speech/README.md) · [Клиентский патч микрофона](https://github.com/TheSameEli/Byond-Mic-Patch/releases/latest).
+> Исходная база: `746427e7262086d42e5177881f5b82b32e81d04e` из SpaceStation220/Primera.
+
 # Добро пожаловать в репозиторий BandaStation по игре Space Station 13
 
 [![Build Status](https://github.com/ss220club/BandaStation/workflows/CI%20Suite/badge.svg)](https://github.com/ss220club/BandaStation/actions?query=workflow%3A%22CI+Suite%22)

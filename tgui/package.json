@@ -28,5 +28,8 @@
 	},
 	"workspaces": [
 		"packages/*"
-	]
+	],
+	"dependencies": {
+		"vosk-browser": "0.0.8"
+	}
 }
