@@ -37,6 +37,8 @@
 
 /// Manually clears any held keys, in case due to lag or other undefined behavior a key gets stuck.
 /client/proc/reset_held_keys()
+	if(tgui_say?.window_open)
+		tgui_say.window.send_message("speech-cancel")
 	for(var/key in keys_held)
 		keyUp(key)
 

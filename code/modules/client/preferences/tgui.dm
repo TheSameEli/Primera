@@ -1,4 +1,13 @@
 // Determines if input boxes are in tgui or old fashioned
+/datum/preference/text/speech_microphone
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	savefile_key = "speech_microphone"
+	savefile_identifier = PREFERENCE_PLAYER
+	maximum_value_length = 256
+
+/datum/preference/text/speech_microphone/apply_to_client(client/client, value)
+	client.tgui_say?.window.send_message("speech-device", list("name" = value))
+
 /datum/preference/toggle/tgui_input
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_key = "tgui_input"

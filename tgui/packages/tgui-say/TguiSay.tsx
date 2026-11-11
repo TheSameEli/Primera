@@ -2,6 +2,7 @@ import './styles/main.scss';
 
 import { useEffect, useRef, useState } from 'react';
 import { dragStartHandler } from 'tgui/drag';
+import { formatKeyboardEvent } from 'tgui/keybindings';
 import { isEscape, KEY } from 'tgui-core/keys';
 import { type BooleanLike, classes } from 'tgui-core/react';
 
@@ -9,16 +10,22 @@ import { type Channel, ChannelIterator } from './ChannelIterator';
 import { ChatHistory } from './ChatHistory';
 import { LineLength, RADIO_PREFIXES, WindowSize } from './constants';
 import { getPrefix, windowClose, windowOpen, windowSet } from './helpers';
+import { OfflineSpeech } from './OfflineSpeech';
+import { SpeechSettings } from './SpeechSettings';
 import { byondMessages } from './timers';
 
 type ByondOpen = {
   channel: Channel;
+  dictation?: BooleanLike;
 };
 
 type ByondProps = {
   maxLength: number;
   lightMode: BooleanLike;
   scale: BooleanLike;
+  speechMicrophone?: string;
+  speechEnabled?: BooleanLike;
+  speechKeys?: string[];
 };
 
 export function TguiSay() {
@@ -36,6 +43,24 @@ export function TguiSay() {
   const [maxLength, setMaxLength] = useState(1024);
   const [size, setSize] = useState(WindowSize.Small);
   const [value, setValue] = useState('');
+  const speech = useRef<OfflineSpeech | null>(null);
+  const speechEnabled = useRef(false);
+  const speechKeys = useRef<string[]>(['ShiftT']);
+  const [speechShortcut, setSpeechShortcut] = useState('ShiftT');
+  const pendingDictation = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
+  const speechMaxLength = useRef(1024);
+  const [speechStatus, setSpeechStatus] = useState('');
+  const [dictating, setDictating] = useState(false);
+  const [speechPanel, setSpeechPanel] = useState<'settings' | null>(null);
+  const panel = useRef<'settings' | null>(null);
+  const [microphone, setMicrophone] = useState('');
+  const [speechLevel, setSpeechLevel] = useState(0);
+  function showSpeechPanel(value: 'settings' | null) {
+    panel.current = value;
+    setSpeechPanel(value);
+  }
 
   const position = useRef([window.screenX, window.screenY]);
   const isDragging = useRef(false);
@@ -117,6 +142,13 @@ export function TguiSay() {
   }
 
   function handleClose(): void {
+    clearTimeout(pendingDictation.current);
+    pendingDictation.current = undefined;
+    speech.current?.cancelPreparation();
+    showSpeechPanel(null);
+    setDictating(false);
+    setSpeechStatus('');
+    setValue('');
     innerRef.current?.blur();
     windowClose(scale.current);
 
@@ -207,6 +239,11 @@ export function TguiSay() {
   function handleKeyDown(
     event: React.KeyboardEvent<HTMLTextAreaElement>,
   ): void {
+    if (speech.current?.busy) {
+      event.preventDefault();
+      if (isEscape(event.key)) handleClose();
+      return;
+    }
     if (event.getModifierState('AltGraph')) return;
 
     switch (event.key) {
@@ -250,7 +287,13 @@ export function TguiSay() {
   }
 
   function handleProps(data: ByondProps): void {
+    speechEnabled.current = !!data.speechEnabled;
+    speechKeys.current = data.speechKeys || [];
+    setSpeechShortcut(speechKeys.current[0] || 'клавиша диктовки');
     setMaxLength(data.maxLength);
+    speechMaxLength.current = data.maxLength;
+    speech.current?.setMicrophone(data.speechMicrophone || '');
+    setMicrophone(data.speechMicrophone || '');
     setLightMode(!!data.lightMode);
     scale.current = !!data.scale;
   }
@@ -263,15 +306,140 @@ export function TguiSay() {
 
   /** Subscribe to Byond messages */
   useEffect(() => {
+    const controller = new OfflineSpeech({
+      open: () => {
+        if (panel.current === 'settings') return;
+        showSpeechPanel(null);
+        channelIterator.current.set('Say');
+        setCurrentPrefix(null);
+        setButtonContent('Говор');
+        // Shift+T and Escape are handled in this same input window.
+        innerRef.current?.focus();
+      },
+      typing: (text, status) => {
+        if (!panel.current || !status) handleOpen({ channel: 'Say' });
+        setDictating(false);
+        setValue(text.slice(0, speechMaxLength.current));
+        setSpeechStatus(status);
+      },
+      preview: (text, status) => {
+        setDictating(true);
+        setValue(text.slice(0, speechMaxLength.current));
+        setSpeechStatus(status);
+      },
+      submit: (text) => {
+        const entry = text.slice(0, speechMaxLength.current).trim();
+        if (entry) {
+          chatHistory.current.add(entry);
+          Byond.sendMessage('entry', { channel: 'Say', entry });
+        }
+        handleClose();
+      },
+      level: setSpeechLevel,
+      testResult: (text) => {
+        setDictating(false);
+        setValue(text);
+        setSpeechStatus(
+          text
+            ? 'Тест завершён. Сообщение в чат не отправлено.'
+            : 'Речь не распознана. Проверьте уровень звука и выбранный микрофон.',
+        );
+      },
+    });
+    speech.current = controller;
+    const keyDown = (event: KeyboardEvent) => {
+      if (
+        speechKeys.current.includes(formatKeyboardEvent(event)) &&
+        speechEnabled.current &&
+        panel.current !== 'settings'
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+        if (!event.repeat) controller.toggleDictation();
+      } else if (isEscape(event.key) && (controller.busy || panel.current)) {
+        event.preventDefault();
+        event.stopPropagation();
+        handleClose();
+      }
+    };
+    document.addEventListener('keydown', keyDown, true);
+    Byond.subscribeTo('speech-cancel', handleClose);
+    Byond.subscribeTo('speech-keys', (data: { keys: string[] }) => {
+      speechKeys.current = data.keys || [];
+      setSpeechShortcut(speechKeys.current[0] || 'клавиша диктовки');
+    });
+    Byond.subscribeTo('speech-device', (data: { name: string }) => {
+      controller.setMicrophone(data.name);
+      setMicrophone(data.name);
+    });
+    Byond.subscribeTo('speech-settings', () => {
+      controller.cancelPreparation();
+      setDictating(false);
+      setSpeechStatus('');
+      setValue('');
+      showSpeechPanel('settings');
+      windowOpen('Say', scale.current);
+      Byond.sendMessage('thinking', { visible: false });
+      Byond.winset('tgui_say.browser', { focus: true });
+    });
+    Byond.subscribeTo('speech-model', (data: { url: string }) =>
+      controller.setModelUrl(data.url),
+    );
+    // Native byond:// calls can raise beforeunload without destroying this page.
+    // Dispose only in the React cleanup below, not on a native API navigation.
     Byond.subscribeTo('props', handleProps);
     Byond.subscribeTo('force', handleForceSay);
-    Byond.subscribeTo('open', handleOpen);
+    Byond.subscribeTo('open', (data: ByondOpen) => {
+      clearTimeout(pendingDictation.current);
+      pendingDictation.current = undefined;
+      if (data.dictation && controller.busy) {
+        controller.toggleDictation();
+        return;
+      }
+      controller.cancelPreparation();
+      showSpeechPanel(null);
+      setDictating(false);
+      setSpeechStatus('');
+      // Exactly the original T handler first, including showing the normal field.
+      handleOpen(data);
+      if (data.dictation) {
+        // BYOND's native navigation calls must finish before requesting the model.
+        pendingDictation.current = setTimeout(() => {
+          pendingDictation.current = undefined;
+          controller.startDictation();
+        }, 100);
+      }
+    });
     Byond.subscribeTo('save', handleSaveText);
     Byond.subscribeTo('close', handleClose);
+    return () => {
+      clearTimeout(pendingDictation.current);
+      document.removeEventListener('keydown', keyDown, true);
+      controller.dispose();
+    };
   }, []);
 
   /** Value has changed, we need to check if the size of the window is ok */
   useEffect(() => {
+    if (speechPanel) {
+      const ratio = scale.current ? window.devicePixelRatio : 1;
+      const dimensions = `${540 * ratio}x${540 * ratio}`;
+      Byond.winset(null, {
+        'tgui_say.size': dimensions,
+        'tgui_say.browser.size': dimensions,
+      });
+      return;
+    }
+    if (dictating) {
+      const ratio = scale.current ? window.devicePixelRatio : 1;
+      const dimensions = `${480 * ratio}x${160 * ratio}`;
+      Byond.winset(null, {
+        'tgui_say.size': dimensions,
+        'tgui_say.browser.size': dimensions,
+      });
+      setSize(WindowSize.Large);
+      return;
+    }
     const len = value?.length || 0;
 
     let newSize: WindowSize;
@@ -283,11 +451,9 @@ export function TguiSay() {
       newSize = WindowSize.Small;
     }
 
-    if (size !== newSize) {
-      windowSet(newSize, scale.current);
-      setSize(newSize);
-    }
-  }, [value]);
+    windowSet(newSize, scale.current);
+    setSize(newSize);
+  }, [value, speechPanel, dictating]);
 
   const TRANSLATE_ITTERATOR: Record<string, string> = {
     Say: 'Говор',
@@ -318,26 +484,56 @@ export function TguiSay() {
         zoom: scale.current ? '' : `${100 / window.devicePixelRatio}%`,
       }}
     >
-      <div className="content">
-        <button
-          className="button"
-          onMouseDown={handleButtonClick}
-          onMouseUp={handleButtonRelease}
-          type="button"
-        >
-          {buttonContent}
-        </button>
-        <textarea
-          autoCorrect="off"
-          className="textarea"
-          maxLength={maxLength}
-          onInput={handleInput}
-          onKeyDown={handleKeyDown}
-          ref={innerRef}
-          spellCheck={false}
-          value={value}
+      {speechPanel === 'settings' ? (
+        <SpeechSettings
+          startTest={() => speech.current?.startTest() ?? false}
+          stopTest={() => speech.current?.release()}
+          microphone={microphone}
+          status={speechStatus}
+          text={value}
+          level={speechLevel}
+          recording={dictating}
+          close={handleClose}
+          select={(name) => {
+            speech.current?.setMicrophone(name);
+            setMicrophone(name);
+            Byond.sendMessage('speech-device', { name });
+          }}
         />
-      </div>
+      ) : (
+        <div className={classes(['content', dictating && 'content-speech'])}>
+          <button
+            disabled={dictating}
+            className="button"
+            onMouseDown={handleButtonClick}
+            onMouseUp={handleButtonRelease}
+            type="button"
+          >
+            {buttonContent}
+          </button>
+          <textarea
+            rows={dictating ? 5 : undefined}
+            placeholder={speechStatus}
+            readOnly={dictating}
+            title={speechStatus}
+            autoCorrect="off"
+            className="textarea"
+            maxLength={maxLength}
+            onInput={handleInput}
+            onKeyDown={handleKeyDown}
+            ref={innerRef}
+            spellCheck={false}
+            value={value}
+          />
+          {dictating && (
+            <div className="speech-hint">
+              {speechShortcut} — отправить · Escape — отменить.
+              <br />
+              Запись до 30 секунд. По лимиту — отмена без отправки.
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
