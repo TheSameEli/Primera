@@ -1,0 +1,4 @@
+author: "mo0niverse"
+delete-after: True
+changes:
+  - code_imp: "Сокращена лишняя обработка движения, атмосферы, груза и речи космических подов."

@@ -1,0 +1,175 @@
+/area/station/engineering
+	icon_state = "engie"
+	ambience_index = AMBIENCE_ENGI
+	airlock_wires = /datum/wires/airlock/engineering
+	sound_environment = SOUND_AREA_LARGE_ENCLOSED
+	tacmap_color = TACMAP_AREA_ENGINEERING
+
+/area/station/engineering/circuit_workshop
+	name = "Circuit Workshop"
+	icon_state = "cir_wor"
+
+/area/station/engineering/engine_smes
+	name = "Engineering SMES"
+	icon_state = "engine_smes"
+
+/area/station/engineering/main
+	name = "Engineering"
+	icon_state = "engine"
+
+/area/station/engineering/main/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/block_area_power_fail)
+
+/area/station/engineering/hallway
+	name = "Engineering Hallway"
+	icon_state = "engine_hallway"
+
+/area/station/engineering/atmos
+	name = "Atmospherics"
+	icon_state = "atmos"
+
+/area/station/engineering/atmos/upper
+	name = "Upper Atmospherics"
+
+/*outside atmos*/
+/area/station/engineering/atmos/space_catwalk
+	name = "Atmospherics Space Catwalk"
+	area_flags = BLOBS_ALLOWED | CULT_PERMITTED
+
+	sound_environment = SOUND_AREA_SPACE
+	ambience_index = AMBIENCE_SPACE
+	ambient_buzz = null //Space is deafeningly quiet
+
+/area/station/engineering/atmos/project
+	name = "Atmospherics Project Room"
+	icon_state = "atmos_projectroom"
+
+/area/station/engineering/atmos/pumproom
+	name = "Atmospherics Pumping Room"
+	icon_state = "atmos_pump_room"
+
+/area/station/engineering/atmos/mix
+	name = "Atmospherics Mixing Room"
+	icon_state = "atmos_mix"
+
+/area/station/engineering/atmos/storage
+	name = "Atmospherics Storage Room"
+	icon_state = "atmos_storage"
+
+/area/station/engineering/atmos/storage/gas
+	name = "Atmospherics Gas Storage"
+	icon_state = "atmos_storage_gas"
+
+/area/station/engineering/atmos/office
+	name = "Atmospherics Office"
+	icon_state = "atmos_office"
+
+/area/station/engineering/atmos/hfr_room
+	name = "Atmospherics HFR Room"
+	icon_state = "atmos_HFR"
+
+/area/station/engineering/atmospherics_engine
+	name = "Atmospherics Engine"
+	icon_state = "atmos_engine"
+	area_flags = BLOBS_ALLOWED | CULT_PERMITTED
+
+/area/station/engineering/atmospherics_engine/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/block_area_power_fail)
+
+/area/station/engineering/lobby
+	name = "Engineering Lobby"
+	icon_state = "engi_lobby"
+
+/area/station/engineering/supermatter
+	name = "Place Somewhere Around the Supermatter" // don't use this type
+	icon_state = "engine_sm"
+	area_flags = BLOBS_ALLOWED | CULT_PERMITTED
+
+/area/station/engineering/supermatter/engine
+	name = "Supermatter Engine"
+	icon_state = "engine_sm"
+	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+
+/area/station/engineering/supermatter/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/block_area_power_fail)
+
+/area/station/engineering/supermatter/waste
+	name = "Supermatter Waste Chamber"
+	icon_state = "engine_sm_waste"
+
+/area/station/engineering/supermatter/room
+	name = "Supermatter Engine Room"
+	icon_state = "engine_sm_room"
+	sound_environment = SOUND_AREA_LARGE_ENCLOSED
+
+/area/station/engineering/supermatter/room/upper
+	name = "Upper Supermatter Engine Room"
+	icon_state = "engine_sm_room_upper"
+	sound_environment = SOUND_AREA_LARGE_ENCLOSED
+
+/area/station/engineering/break_room
+	name = "Engineering Foyer"
+	icon_state = "engine_break"
+	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+
+/area/station/engineering/gravity_generator
+	name = "Gravity Generator Room"
+	icon_state = "grav_gen"
+	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+
+/area/station/engineering/storage
+	name = "Engineering Storage"
+	icon_state = "engine_storage"
+	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+
+/area/station/engineering/storage_shared
+	name = "Shared Engineering Storage"
+	icon_state = "engine_storage_shared"
+
+/area/station/engineering/transit_tube
+	name = "Transit Tube"
+	icon_state = "transit_tube"
+
+/area/station/engineering/storage/tech
+	name = "Technical Storage"
+	icon_state = "tech_storage"
+
+/area/station/engineering/storage/tcomms
+	name = "Telecomms Storage"
+	icon_state = "tcom_storage"
+	area_flags = BLOBS_ALLOWED | CULT_PERMITTED
+
+/area/station/engineering/spacepods/hangar
+	name = "Spacepods Hangar"
+	icon_state = "engine"
+
+/area/station/engineering/spacepods/boathouse
+	name = "Spacepods Boathouse"
+	icon_state = "engine"
+
+/area/station/engineering/spacepods/port
+	name = "Spacepods Port"
+	icon_state = "engine"
+
+/*
+* Construction Areas
+*/
+
+/area/station/construction
+	name = "Construction Area"
+	icon_state = "construction"
+	ambience_index = AMBIENCE_ENGI
+	sound_environment = SOUND_AREA_STANDARD_STATION
+	tacmap_color = TACMAP_AREA_ENGINEERING
+
+/area/station/construction/mining/aux_base
+	name = "Auxiliary Base Construction"
+	icon_state = "aux_base_construction"
+	sound_environment = SOUND_AREA_MEDIUM_SOFTFLOOR
+
+/area/station/construction/storage_wing
+	name = "Storage Wing"
+	icon_state = "storage_wing"

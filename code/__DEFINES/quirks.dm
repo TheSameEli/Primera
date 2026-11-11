@@ -1,0 +1,19 @@
+//Medical Categories for quirks
+#define CAT_QUIRK_ALL 0
+#define CAT_QUIRK_NOTES 1
+#define CAT_QUIRK_MINOR_DISABILITY 2
+#define CAT_QUIRK_MAJOR_DISABILITY 3
+
+/// This quirk can only be applied to humans
+#define QUIRK_HUMAN_ONLY (1<<0)
+/// This quirk processes on SSquirks (and should implement quirk process)
+#define QUIRK_PROCESSES (1<<1)
+/// This quirk is has a visual aspect in that it changes how the player looks. Used in generating dummies.
+#define QUIRK_CHANGES_APPEARANCE (1<<2)
+/// This quirk shouldn't be shown by health analyzers and hud, perhaps as considering it medical condition is a far stretch.
+#define QUIRK_HIDE_FROM_SCAN (1<<3)
+/// Quirk is similar to brain trauma and should be shown in medical guides as one.
+/// You don't need to set this on quirks that apply a trauma, that's redundant.
+#define QUIRK_TRAUMALIKE (1<<4)
+/// Do not transfer this quirk via transfer_quirk_datums
+#define QUIRK_NO_TRANSFER (1<<5)

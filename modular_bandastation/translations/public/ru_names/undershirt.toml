@@ -1,0 +1,8 @@
+["undershirt"]
+nominative = "майка"
+genitive = "майки"
+dative = "майке"
+accusative = "майку"
+instrumental = "майкой"
+prepositional = "майке"
+gender = "female"

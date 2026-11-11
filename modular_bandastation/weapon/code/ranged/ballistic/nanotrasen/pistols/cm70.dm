@@ -1,0 +1,42 @@
+/obj/item/gun/ballistic/automatic/pistol/cm70
+	name = "GP-45"
+	desc = "Стандартный служебный пистолет Нанотрейзен под патроны калибра .45."
+	icon = 'modular_bandastation/weapon/icons/ranged/ballistic48x32.dmi'
+	icon_state = "cm70"
+	lefthand_file = 'modular_bandastation/weapon/icons/ranged/inhands/ballistic/lefthand.dmi'
+	righthand_file = 'modular_bandastation/weapon/icons/ranged/inhands/ballistic/righthand.dmi'
+	inhand_icon_state = "cm_pistol"
+	w_class = WEIGHT_CLASS_NORMAL
+	fire_sound = 'modular_bandastation/weapon/sound/ranged/cm70.ogg'
+	rack_sound = 'sound/items/weapons/gun/pistol/rack.ogg'
+	lock_back_sound = 'sound/items/weapons/gun/pistol/slide_lock.ogg'
+	bolt_drop_sound = 'sound/items/weapons/gun/pistol/slide_drop.ogg'
+	load_sound = 'modular_bandastation/weapon/sound/ranged/cm357_reload.ogg'
+	load_empty_sound = 'modular_bandastation/weapon/sound/ranged/cm357_reload.ogg'
+	eject_sound = 'modular_bandastation/weapon/sound/ranged/cm357_unload.ogg'
+	eject_empty_sound = 'modular_bandastation/weapon/sound/ranged/cm357_unload.ogg'
+	accepted_magazine_type = /obj/item/ammo_box/magazine/c45
+	can_suppress = TRUE
+	suppressor_x_offset = 0
+	suppressor_y_offset = 0
+	recoil = 0.5
+
+/obj/item/gun/ballistic/automatic/pistol/cm70/add_seclight_point()
+	AddComponent(\
+		/datum/component/seclite_attachable, \
+		light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', \
+		light_overlay = "mini-light", \
+		overlay_x = 22, \
+		overlay_y = 13 \
+	)
+
+/obj/item/gun/ballistic/automatic/pistol/cm70/no_mag
+	spawnwithmagazine = FALSE
+
+/obj/item/gun/ballistic/automatic/pistol/cm70/hos
+	name = "GP-45M"
+	desc = "Служебный пистолет Нанотрейзен под патроны калибра .45, модифицированный для стрельбы с отсечкой в два патрона. Часто выдается в качестве личного оружия главы службы безопасности на научных объектах Нанотрейзен."
+	burst_size = 2
+	actions_types = list(/datum/action/item_action/toggle_firemode)
+	spawn_magazine_type = /obj/item/ammo_box/magazine/c45/rubber
+	projectile_damage_multiplier = 0.6

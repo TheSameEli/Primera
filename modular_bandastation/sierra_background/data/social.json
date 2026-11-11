@@ -1,0 +1,171 @@
+{
+  "source": {
+    "description": "Только названия и тексты из подтверждённых источников; перечень кланов и домов не исчерпывающий. Никаких профессиональных ограничений.",
+    "reviewed_on": "2026-10-28"
+  },
+  "species": {
+    "skrell": {
+      "label": "Каста",
+      "preference": "skrell_caste",
+      "can_omit": false
+    },
+    "vulpkanin": {
+      "label": "Клан",
+      "preference": "sierra_social",
+      "can_omit": true
+    },
+    "lizard": {
+      "label": "Клан",
+      "preference": "sierra_social",
+      "can_omit": true
+    },
+    "tajaran": {
+      "label": "Дом",
+      "preference": "sierra_social",
+      "can_omit": true
+    }
+  },
+  "entries": {
+    "none": {
+      "name": "Не указано",
+      "description": "Принадлежность к именованному клану или дому не указана. Личные сведения можно добавить в биографию."
+    },
+    "vulp_ashtar": {
+      "name": "Аштар",
+      "description": "* Матриарх Альдами Ал’хуруб — вульпканка из клана Аштар, лидер союза «Искателей»: сборища пиратов, контрабандистов и наёмников. Контролирует северные секторы.",
+      "allowed_species": [
+        "vulpkanin"
+      ],
+      "source_refs": [
+        "https://docs.google.com/document/d/1Yp6SsxMpc8sGhr6ztFQgbtQNwbHvRQY-zxxjiblr4zM/edit"
+      ]
+    },
+    "vulp_rakh": {
+      "name": "Рахт",
+      "description": "Клан ценит науку, философию, медитацию и единение с природой; его представители стремятся объединить Альтам политическим путём. В общении приняты сдержанность и убеждение соперника в правоте своих идеалов.",
+      "allowed_species": [
+        "vulpkanin"
+      ],
+      "source_refs": [
+        "https://bs.ss220.club/index.php/Вульпканин#Рекомендации_по_отыгрышу_кланов"
+      ],
+      "author_decision": "2026-10-28: автор одобрил добавление клана и уточнил название: «Рахт»."
+    },
+    "vulp_mzmanulin": {
+      "name": "Догмат Мзманулина",
+      "description": "Клан связывает справедливость с порядком, дисциплиной и силой. Его представители сдержанны, стойки и готовы защищать своих; общую принадлежность подчёркивают военной одеждой, братством и стихами о доме и войне.",
+      "allowed_species": [
+        "vulpkanin"
+      ],
+      "source_refs": [
+        "https://bs.ss220.club/index.php/Вульпканин#Рекомендации_по_отыгрышу_кланов"
+      ]
+    },
+    "vulp_refugee": {
+      "name": "Беженец",
+      "description": "Общинная принадлежность вульпканинов, покинувших воюющий Альтам, и их потомков. В этих общинах ценят взаимопомощь, щедрость, гостеприимство и мирную жизнь. Связь с родиной может сохраняться вместе с тяжёлой памятью о войне. Выбор обозначает общину беженцев, а членство в одном из кланов остаётся неуказанным.",
+      "allowed_species": [
+        "vulpkanin"
+      ],
+      "source_refs": [
+        "https://bs.ss220.club/index.php/Вульпканин#Рекомендации_по_отыгрышу_кланов",
+        "https://github.com/SpaceStation220/Primera/blob/3676661f168e19a5eec240210ca8f7e4fc8dcfa3/modular_bandastation/species/code/human/species_type/vulpkanin.dm"
+      ],
+      "author_decision": "2026-10-28: автор одобрил отдельный вариант «Беженец» в расовой социальной принадлежности."
+    },
+    "unathi_szaahi": {
+      "name": "Сзаахи",
+      "description": "Правящий женский клан Могеса, ориентированный на власть и демонстрацию статуса. Его представительницам свойственны высокомерие и хвастовство; родившиеся в клане самцы переходят в Кхарси.",
+      "allowed_species": [
+        "lizard"
+      ],
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Унатх&oldid=72238#Иерархия_кланов"
+      ]
+    },
+    "unathi_usshulu": {
+      "name": "Усшулу",
+      "description": "Закрытый и малочисленный клан жриц. В него вступают особо религиозные представительницы Сзаахи, принимая целибат.",
+      "allowed_species": [
+        "lizard"
+      ],
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Унатх&oldid=72238#Иерархия_кланов"
+      ]
+    },
+    "unathi_kharsi": {
+      "name": "Кхарси",
+      "description": "Клан охотников, принимающий самцов и самок. Принадлежность получают через семью охотников либо посвящение — выживание в джунглях Могеса без начальных ресурсов.",
+      "allowed_species": [
+        "lizard"
+      ],
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Унатх&oldid=72238#Иерархия_кланов"
+      ]
+    },
+    "unathi_zessur": {
+      "name": "Зессур",
+      "description": "Исследовательский клан, сосредоточенный на получении знаний. Его представители обычно сдержаннее и менее агрессивны, чем сородичи, а физическому развитию уделяют меньше внимания.",
+      "allowed_species": [
+        "lizard"
+      ],
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts",
+        "https://bs.ss220.club/index.php?title=Унатх&oldid=72238#Иерархия_кланов"
+      ]
+    },
+    "unathi_shursi": {
+      "name": "Шурси",
+      "description": "Самый многочисленный рабочий клан Могеса с низким общественным положением. Родившемуся в нём трудно перейти на более высокую ступень клановой иерархии.",
+      "allowed_species": [
+        "lizard"
+      ],
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Унатх&oldid=72238#Иерархия_кланов"
+      ]
+    },
+    "unathi_uzo": {
+      "name": "Узо (внеклановые)",
+      "description": "Внеклановые: изгнанники и унатхи, рождённые вне родной звёздной системы. На Могесе лишены привилегий и сталкиваются с презрением; чаще живут в колониях.",
+      "allowed_species": [
+        "lizard"
+      ],
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Унатх&oldid=72238#Иерархия_кланов"
+      ]
+    },
+    "tajaran_kaitam": {
+      "name": "Кайтам",
+      "description": "* Верховный судья Т’нон — таяран из Дома Кайтам, «Белый тигр Джормитара», адъюдикатор Ордена Порядка, лидер юстициаров Ordo Lex и хранитель южных секторов Вольницы.",
+      "allowed_species": [
+        "tajaran"
+      ],
+      "source_refs": [
+        "https://docs.google.com/document/d/1Yp6SsxMpc8sGhr6ztFQgbtQNwbHvRQY-zxxjiblr4zM/edit"
+      ]
+    },
+    "tajaran_hadii": {
+      "name": "Хадии",
+      "description": "Крупнейший и старейший дом Адомая, отвечающий за торговлю и дипломатию. Его представители предпочитают спокойные переговоры и компромиссы, выступают за сближение с человечеством при сохранении таярской культуры. Тесно сотрудничают с Сэндай в восстановлении традиций.",
+      "allowed_species": [
+        "tajaran"
+      ],
+      "source_refs": [
+        "https://github.com/ss220club/BandaStation/blob/d3042f548179189a382d64e44ccf85d83e32cdef/modular_bandastation/species/code/human/species_type/tajaran.dm",
+        "https://bs.ss220.club/index.php?title=Таяран&oldid=77327#Дом_Хадии"
+      ]
+    },
+    "tajaran_sendai": {
+      "name": "Сэндай",
+      "description": "Дом, объединивший семьи и кланы ради восстановления культуры таяр. Занимается археологическими экспедициями, изучением письменности и искусствами. Выступает за мирное сосуществование с людьми без утраты самостоятельности. Сохраняет семейные ветви в именах своих представителей.",
+      "allowed_species": [
+        "tajaran"
+      ],
+      "source_refs": [
+        "https://github.com/ss220club/BandaStation/blob/d3042f548179189a382d64e44ccf85d83e32cdef/modular_bandastation/species/code/human/species_type/tajaran.dm",
+        "https://bs.ss220.club/index.php?title=Таяран&oldid=77327#Дом_Сэндай"
+      ]
+    }
+  }
+}

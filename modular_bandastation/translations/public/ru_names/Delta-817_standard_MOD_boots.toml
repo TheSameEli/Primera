@@ -1,0 +1,10 @@
+# AI EDIT START - Split the imported name into its required translation fragment.
+["Delta-817 standard MOD boots"]
+nominative = "ботинки стандартного МОД «Дельта-817»"
+genitive = "ботинок стандартного МОД «Дельта-817»"
+dative = "ботинкам стандартного МОД «Дельта-817»"
+accusative = "ботинки стандартного МОД «Дельта-817»"
+instrumental = "ботинками стандартного МОД «Дельта-817»"
+prepositional = "ботинках стандартного МОД «Дельта-817»"
+gender = "plural"
+# AI EDIT END

@@ -1,0 +1,184 @@
+//Called on /mob/living/carbon/Initialize(mapload), for the carbon mobs to register relevant signals.
+/mob/living/carbon/register_init_signals()
+	. = ..()
+
+	//Traits that register add and remove
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_AGENDER), PROC_REF(on_agender_trait_gain))
+	RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_AGENDER), PROC_REF(on_agender_trait_loss))
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_NOBLOOD), PROC_REF(on_noblood_trait_gain))
+	RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_NOBLOOD), PROC_REF(on_noblood_trait_loss))
+	// BANDASTATION ADDITION START - Keep corpse preservation in sync across species changes
+	RegisterSignals(src, list(
+		SIGNAL_ADDTRAIT(TRAIT_NODECAY),
+		SIGNAL_REMOVETRAIT(TRAIT_NODECAY),
+		COMSIG_SPECIES_GAIN,
+	), PROC_REF(update_corpse_decay))
+	// BANDASTATION ADDITION END - Keep corpse preservation in sync across species changes
+
+	//Traits that register add only
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_NOBREATH), PROC_REF(on_nobreath_trait_gain))
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_LIVERLESS_METABOLISM), PROC_REF(on_liverless_metabolism_trait_gain))
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_VIRUSIMMUNE), PROC_REF(on_virusimmune_trait_gain))
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_TOXIMMUNE), PROC_REF(on_toximmune_trait_gain))
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_GENELESS), PROC_REF(on_geneless_trait_gain))
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_NO_SPLIT_PERSONALITY), PROC_REF(on_no_split_personality_trait_gain))
+
+	RegisterSignals(src, list(SIGNAL_ADDTRAIT(TRAIT_NO_OXYLOSS_PASSOUT), SIGNAL_REMOVETRAIT(TRAIT_NO_OXYLOSS_PASSOUT)), PROC_REF(check_passout))
+
+	RegisterSignals(src, list(
+		SIGNAL_ADDTRAIT(TRAIT_NOHARDCRIT),
+		SIGNAL_REMOVETRAIT(TRAIT_NOHARDCRIT),
+		SIGNAL_ADDTRAIT(TRAIT_NOSOFTCRIT),
+		SIGNAL_REMOVETRAIT(TRAIT_NOSOFTCRIT),
+	), PROC_REF(update_stat))
+
+/**
+ * On gain of TRAIT_AGENDER
+ *
+ * This will make the mob get it's gender set to PLURAL.
+ */
+/mob/living/carbon/proc/on_agender_trait_gain(datum/source)
+	SIGNAL_HANDLER
+
+	gender = PLURAL
+
+/**
+ * On removal of TRAIT_AGENDER
+ *
+ * This will make the mob get it's gender set to whatever the DNA says it should be.
+ */
+/mob/living/carbon/proc/on_agender_trait_loss(datum/source)
+	SIGNAL_HANDLER
+
+	var/datum/dna_block/identity/gender/to_update = GLOB.dna_identity_blocks[/datum/dna_block/identity/gender]
+	to_update.apply_to_mob(src, src.dna.unique_identity)
+
+/**
+ * On gain of TRAIT_NOBLOOD
+ *
+ * This will make the mob update its blood state.
+ */
+/mob/living/carbon/proc/on_noblood_trait_gain(datum/source)
+	SIGNAL_HANDLER
+
+	update_blood_status()
+
+/**
+ * On removal of TRAIT_NOBLOOD
+ *
+ * This will make the mob update its blood state.
+ */
+/mob/living/carbon/proc/on_noblood_trait_loss(datum/source)
+	SIGNAL_HANDLER
+
+	update_blood_status()
+
+// BANDASTATION ADDITION START - Preserve existing corpses and restore ordinary rot after protection ends
+/// Species loss removes biotypes before traits, so the completed species gain must also recheck decay.
+/mob/living/carbon/proc/update_corpse_decay(datum/source)
+	SIGNAL_HANDLER
+
+	var/datum/component/rot/rot = GetComponent(/datum/component/rot)
+	if(HAS_TRAIT(src, TRAIT_NODECAY))
+		qdel(rot)
+		return
+	if(stat == DEAD && !rot)
+		attach_rot()
+// BANDASTATION ADDITION END - Preserve existing corpses and restore ordinary rot after protection ends
+
+/**
+ * On gain of TRAIT_NOBREATH
+ *
+ * This will clear all alerts and moods related to breathing.
+ */
+/mob/living/carbon/proc/on_nobreath_trait_gain(datum/source)
+	SIGNAL_HANDLER
+
+	set_oxy_loss(0, updating_health = TRUE, forced = TRUE)
+	losebreath = 0
+	failed_last_breath = FALSE
+
+	clear_alert(ALERT_TOO_MUCH_OXYGEN)
+	clear_alert(ALERT_NOT_ENOUGH_OXYGEN)
+
+	clear_alert(ALERT_TOO_MUCH_PLASMA)
+	clear_alert(ALERT_NOT_ENOUGH_PLASMA)
+
+	clear_alert(ALERT_TOO_MUCH_NITRO)
+	clear_alert(ALERT_NOT_ENOUGH_NITRO)
+
+	clear_alert(ALERT_TOO_MUCH_CO2)
+	clear_alert(ALERT_NOT_ENOUGH_CO2)
+
+	clear_alert(ALERT_TOO_MUCH_N2O)
+	clear_alert(ALERT_NOT_ENOUGH_N2O)
+
+	clear_mood_event("chemical_euphoria")
+	clear_mood_event("smell")
+	clear_mood_event("suffocation")
+
+/**
+ * On gain of TRAIT_LIVERLESS_METABOLISM
+ *
+ * This will clear all moods related to addictions and stop metabolization.
+ */
+/mob/living/carbon/proc/on_liverless_metabolism_trait_gain(datum/source)
+	SIGNAL_HANDLER
+
+	for(var/addiction_type in GLOB.addictions)
+		mind?.remove_addiction_points(addiction_type, MAX_ADDICTION_POINTS) //Remove the addiction!
+
+	reagents.end_metabolization(keep_liverless = TRUE)
+
+/**
+ * On gain of TRAIT_VIRUSIMMUNE
+ *
+ * This will clear all diseases on the mob.
+ */
+/mob/living/carbon/proc/on_virusimmune_trait_gain(datum/source)
+	SIGNAL_HANDLER
+
+	for(var/datum/disease/disease as anything in diseases)
+		disease.cure(FALSE)
+
+/**
+ * On gain of TRAIT_TOXIMMUNE
+ *
+ * This will clear all toxin damage on the mob.
+ */
+/mob/living/carbon/proc/on_toximmune_trait_gain(datum/source)
+	SIGNAL_HANDLER
+
+	set_tox_loss(0, updating_health = TRUE, forced = TRUE)
+
+/**
+ * On gain of TRAIT_GENELLESS
+ *
+ * This will clear all DNA mutations on on the mob.
+ */
+/mob/living/carbon/proc/on_geneless_trait_gain(datum/source)
+	SIGNAL_HANDLER
+
+	dna?.remove_all_mutations(GLOB.standard_mutation_sources + MUTATION_SOURCE_DNA_VAULT)
+
+/**
+ * On gain of TRAIT_NO_SPLIT_PERSONALITY
+ *
+ * This will make the mob lose the split personality trauma if they have it.
+ */
+/mob/living/carbon/proc/on_no_split_personality_trait_gain(datum/source)
+	SIGNAL_HANDLER
+
+	cure_trauma_type(/datum/brain_trauma/severe/split_personality, TRAUMA_LIMIT_ABSOLUTE)
+
+/mob/living/carbon/on_hearing_loss(datum/source)
+	. = ..()
+	breathing_loop.stop()
+
+/mob/living/carbon/on_stasis_trait_gain(datum/source)
+	. = ..()
+	update_bodypart_bleed_overlays()
+
+/mob/living/carbon/on_stasis_trait_loss(datum/source)
+	. = ..()
+	update_bodypart_bleed_overlays()

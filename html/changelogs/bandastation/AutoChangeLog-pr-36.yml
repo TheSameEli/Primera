@@ -1,0 +1,4 @@
+author: "Fullonibus"
+delete-after: True
+changes:
+  - code_imp: "В AGENTS.md добавлены ссылки на руководства, уточнены правила проверки изменений и введена маркировка правок агентов блоками AI EDIT."

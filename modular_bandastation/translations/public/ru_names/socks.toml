@@ -1,0 +1,8 @@
+["socks"]
+nominative = "носки"
+genitive = "носков"
+dative = "носкам"
+accusative = "носки"
+instrumental = "носками"
+prepositional = "носках"
+gender = "plural"

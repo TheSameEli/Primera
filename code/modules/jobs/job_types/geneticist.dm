@@ -1,0 +1,55 @@
+/datum/job/geneticist
+	title = JOB_GENETICIST
+	description = "Модифицируйте гены, отвергните человечество и станьте обезьяной (и наоборот), и создавайте резервные копии ДНК."
+	faction = FACTION_STATION
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = JOB_RESEARCH_DIRECTOR_RU
+	exp_requirements = 60
+	exp_required_type = EXP_TYPE_CREW
+	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "GENETICIST"
+
+	outfit = /datum/outfit/job/geneticist
+	plasmaman_outfit = /datum/outfit/plasmaman/genetics
+	departments_list = list(
+		/datum/job_department/science,
+		)
+
+	paycheck = PAYCHECK_CREW
+	paycheck_department = ACCOUNT_SCI
+
+	display_order = JOB_DISPLAY_ORDER_GENETICIST
+	bounty_types = CIV_JOB_SCI
+
+	mail_goodies = list(
+		/obj/item/storage/box/monkeycubes = 10
+	)
+
+	family_heirlooms = list(/obj/item/clothing/under/shorts/purple)
+	rpg_title = "Genemancer"
+	job_flags = STATION_JOB_FLAGS
+	tgui_icon = FA_ICON_DNA
+
+
+/datum/outfit/job/geneticist
+	name = "Geneticist"
+	jobtype = /datum/job/geneticist
+
+	id_trim = /datum/id_trim/job/geneticist
+	uniform = /obj/item/clothing/under/rank/rnd/geneticist
+	suit = /obj/item/clothing/suit/toggle/labcoat/genetics
+	suit_store = /obj/item/flashlight/pen
+	belt = /obj/item/modular_computer/pda/crew/geneticist
+	// AI EDIT START - Support independent left and right ear slots
+	ear_right = /obj/item/radio/headset/headset_sci // BANDASTATION EDIT - Dual ear slots
+	// AI EDIT END
+	shoes = /obj/item/clothing/shoes/sneakers/white
+	l_pocket = /obj/item/sequence_scanner
+
+	backpack = /obj/item/storage/backpack/genetics
+	satchel = /obj/item/storage/backpack/satchel/gen
+	duffelbag = /obj/item/storage/backpack/duffelbag/genetics
+	messenger = /obj/item/storage/backpack/messenger/gen
+
+	wintercoat = /obj/item/clothing/suit/hooded/wintercoat/science/genetics

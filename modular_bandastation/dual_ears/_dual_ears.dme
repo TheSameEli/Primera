@@ -1,0 +1,5 @@
+// AI EDIT START - Implement and verify independent ear slots
+#include "_dual_ears.dm"
+#include "code/occupies_slots.dm"
+#include "code/appearance.dm"
+// AI EDIT END

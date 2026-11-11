@@ -1,0 +1,11 @@
+#include "_uplink_items.dm"
+
+#include "code/nukeops.dm"
+#include "code/stealthy.dm"
+#include "code/role_restricted.dm"
+#include "code/garrote.dm"
+#include "code/binyat.dm"
+#include "code/razorwire.dm"
+#include "code/kaleido.dm"
+#include "code/mantis.dm"
+#include "code/implants.dm"

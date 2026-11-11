@@ -1,0 +1,135 @@
+/mob/living/basic/garden_gnome
+	name = "Garden Gnome"
+	desc = "You have been gnomed."
+	icon = 'icons/mob/simple/garden_gnome.dmi'
+	icon_state = "gnome"
+	icon_living = "gnome"
+	pass_flags = PASSMOB
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
+	speed = 1
+	maxHealth = 40
+	health = 40
+	basic_mob_flags = DEL_ON_DEATH
+
+	obj_damage = 20
+	melee_damage_lower = 5
+	melee_damage_upper = 10
+	attack_verb_continuous = "punches"
+	attack_verb_simple = "punch"
+	attack_sound = 'sound/items/weapons/punch1.ogg'
+	melee_attack_cooldown = 1.2 SECONDS
+	speak_emote = list("announces")
+
+	unsuitable_atmos_damage = 0
+	minimum_survivable_temperature = 0
+	maximum_survivable_temperature = 500
+
+	faction = list(FACTION_GNOME)
+	mob_size = MOB_SIZE_SMALL
+	gold_core_spawnable = HOSTILE_SPAWN
+	greyscale_config = /datum/greyscale_config/garden_gnome
+	ai_controller = /datum/ai_controller/basic_controller/garden_gnome
+	/// Realistically weighted list of usual gnome hat colours
+	var/static/list/gnome_hat_colours = list(
+		COLOR_GNOME_RED_ONE = 9,
+		COLOR_GNOME_RED_TWO = 9,
+		COLOR_GNOME_RED_THREE = 9,
+		COLOR_GNOME_BLUE_ONE = 3,
+		COLOR_GNOME_BLUE_TWO = 3,
+		COLOR_GNOME_BLUE_THREE = 3,
+		COLOR_GNOME_GREEN_ONE = 3,
+		COLOR_GNOME_GREEN_TWO = 3,
+		COLOR_GNOME_ORANGE = 3,
+		COLOR_GNOME_BROWN_ONE = 3,
+		COLOR_GNOME_YELLOW = 2,
+		COLOR_GNOME_GREY = 2,
+		COLOR_GNOME_PURPLE = 1,
+		COLOR_GNOME_WHITE = 1,
+		COLOR_GNOME_BLACK = 1,
+	)
+	/// The chosen hat colour
+	var/chosen_hat_colour
+	/// Realistically weighted list of usual gnome body colours
+	var/static/list/gnome_body_colours = list(
+		COLOR_GNOME_YELLOW = 6,
+		COLOR_GNOME_RED_ONE = 3,
+		COLOR_GNOME_RED_TWO = 3,
+		COLOR_GNOME_RED_THREE = 3,
+		COLOR_GNOME_BLUE_ONE = 3,
+		COLOR_GNOME_BLUE_TWO = 3,
+		COLOR_GNOME_BLUE_THREE = 3,
+		COLOR_GNOME_GREEN_ONE = 3,
+		COLOR_GNOME_GREEN_TWO = 3,
+		COLOR_GNOME_BROWN_ONE = 3,
+		COLOR_GNOME_ORANGE = 2,
+		COLOR_GNOME_WHITE = 1,
+		COLOR_GNOME_GREY = 1,
+		COLOR_GNOME_PURPLE = 1,
+		COLOR_GNOME_BLACK = 1,
+	)
+	/// Realistically weighted list of usual gnome pants colours
+	var/static/list/gnome_pants_colours = list(
+		COLOR_GNOME_BLUE_ONE = 6,
+		COLOR_GNOME_BLUE_TWO = 6,
+		COLOR_GNOME_BLUE_THREE = 6,
+		COLOR_GNOME_GREEN_ONE = 6,
+		COLOR_GNOME_GREEN_TWO = 6,
+		COLOR_GNOME_BROWN_ONE = 3,
+		COLOR_GNOME_BROWN_TWO = 3,
+		COLOR_GNOME_RED_ONE = 1,
+		COLOR_GNOME_ORANGE = 1,
+		COLOR_GNOME_WHITE = 1,
+		COLOR_GNOME_GREY = 1,
+		COLOR_GNOME_PURPLE = 1,
+		COLOR_GNOME_BLACK = 1,
+	)
+	/// Realistically weighted list of usual gnome beard colours
+	var/static/list/gnome_beard_colours = list(
+		COLOR_GNOME_WHITE = 9,
+		COLOR_GNOME_GREY = 9,
+		COLOR_GNOME_BROWN_ONE = 6,
+		COLOR_GNOME_BROWN_TWO = 6,
+		COLOR_GNOME_BLACK = 6,
+		COLOR_GNOME_ORANGE = 3,
+		COLOR_GNOME_GREEN_TWO = 1,
+		COLOR_GNOME_RED_ONE = 1,
+		COLOR_GNOME_PURPLE = 1,
+	)
+
+/mob/living/basic/garden_gnome/Initialize(mapload)
+	. = ..()
+	var/datum/callback/retaliate_callback = CALLBACK(src, PROC_REF(ai_retaliate_behaviour))
+	chosen_hat_colour = pick_weight(gnome_hat_colours)
+	apply_colour()
+	AddElement(/datum/element/death_drops, /obj/effect/gibspawner/generic)
+	AddElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE)
+	AddComponent(/datum/component/ai_retaliate_advanced, retaliate_callback)
+	AddComponent(/datum/component/swarming)
+	AddComponent(/datum/component/ground_sinking, target_icon_state = icon_state, outline_colour = chosen_hat_colour, sink_callback = CALLBACK(src, PROC_REF(toggle_sink_damage_res)))
+	AddComponent(/datum/component/caltrop, min_damage = 5, max_damage = 10, paralyze_duration = 1 SECONDS, flags = CALTROP_BYPASS_SHOES)
+	add_traits(list(TRAIT_SPACEWALK, TRAIT_VENTCRAWLER_ALWAYS), INNATE_TRAIT)
+
+///Apply extra damage resistances when sunk in the ground.
+/mob/living/basic/garden_gnome/proc/toggle_sink_damage_res(has_sunk)
+	MODIFY_PHYSIOLOGY(src, BRUTE, has_sunk ? 0.5 : 2)
+	MODIFY_PHYSIOLOGY(src, BURN, has_sunk ? 0.5 : 2)
+	MODIFY_PHYSIOLOGY(src, STAMINA, has_sunk ? 0.1 : 10)
+
+/mob/living/basic/garden_gnome/proc/apply_colour()
+	if(!greyscale_config)
+		return
+	set_greyscale(colors = list(chosen_hat_colour, pick_weight(gnome_body_colours), pick_weight(gnome_pants_colours), pick_weight(gnome_beard_colours)))
+
+/mob/living/basic/garden_gnome/proc/ai_retaliate_behaviour(mob/living/attacker)
+	if (!istype(attacker))
+		return
+	for (var/mob/living/basic/garden_gnome/potential_gnome in oview(src, 7))
+		potential_gnome.ai_controller.set_blackboard_key_assoc_lazylist(BB_BASIC_MOB_RETALIATE_LIST, attacker, world.time)
+
+/datum/ai_controller/basic_controller/garden_gnome
+	behavior_tree_json = "code/modules/mob/living/basic/space_fauna/garden_gnome.bt.json"
+	blackboard = list(
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
+	)
+
+	ai_movement = /datum/ai_movement/basic_avoidance

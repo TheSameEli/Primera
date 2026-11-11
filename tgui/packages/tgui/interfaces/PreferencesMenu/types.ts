@@ -1,0 +1,344 @@
+import type { BooleanLike } from 'tgui-core/react';
+
+import type { sendAct } from '../../events/act';
+import type {
+  LoadoutCategory,
+  LoadoutList,
+  typePath,
+} from './CharacterPreferences/loadout/base';
+import type { Gender } from './preferences/gender';
+
+export enum Food {
+  Alcohol = 'ALCOHOL',
+  Breakfast = 'BREAKFAST',
+  Bugs = 'BUGS',
+  Cloth = 'CLOTH',
+  Dairy = 'DAIRY',
+  Fried = 'FRIED',
+  Fruit = 'FRUIT',
+  Gore = 'GORE',
+  Grain = 'GRAIN',
+  Gross = 'GROSS',
+  Junkfood = 'JUNKFOOD',
+  Meat = 'MEAT',
+  Nuts = 'NUTS',
+  Oranges = 'ORANGES',
+  Pineapple = 'PINEAPPLE',
+  Raw = 'RAW',
+  Seafood = 'SEAFOOD',
+  Stone = 'STONE',
+  Sugar = 'SUGAR',
+  Toxic = 'TOXIC',
+  Vegetables = 'VEGETABLES',
+  Egg = 'EGG',
+  Tech = 'TECH', // BANDASTATION ADDITION - Vox food
+}
+
+export enum JobPriority {
+  Low = 1,
+  Medium = 2,
+  High = 3,
+}
+
+type JobPreference = {
+  job: string;
+  priority: JobPriority | null;
+  assigned_profile_slot: number | null;
+};
+
+export type Name = {
+  can_randomize: BooleanLike;
+  explanation: string;
+  group: string;
+};
+
+export type Species = {
+  name: string;
+  desc: string;
+  lore: string[];
+  icon: string;
+
+  use_skintones: BooleanLike;
+  sexes: BooleanLike;
+
+  enabled_features: string[];
+
+  perks: {
+    positive: Perk[];
+    negative: Perk[];
+    neutral: Perk[];
+  };
+
+  diet?: {
+    liked_food: Food[];
+    disliked_food: Food[];
+    toxic_food: Food[];
+  };
+};
+
+export type Perk = {
+  ui_icon: string;
+  name: string;
+  description: string;
+};
+
+export type Department = {
+  head?: string;
+  color: string;
+};
+
+export type Job = {
+  description: string;
+  department: string;
+};
+
+export type Quirk = {
+  description: string;
+  icon: string;
+  name: string;
+  value: number;
+  customizable: boolean;
+  customization_options?: string[];
+};
+
+export type QuirkInfo = {
+  max_positive_quirks: number;
+  quirk_info: Record<string, Quirk>;
+  quirk_blacklist: string[][];
+  points_enabled: boolean;
+};
+
+export type Personality = {
+  name: string;
+  description: string;
+  pos_gameplay_description: string | null;
+  neg_gameplay_description: string | null;
+  neut_gameplay_description: string | null;
+  path: typePath;
+  groups: string[] | null;
+};
+
+export enum RandomSetting {
+  AntagOnly = 1,
+  Disabled = 2,
+  Enabled = 3,
+}
+
+export enum JoblessRole {
+  BeOverflow = 1,
+  BeRandomJob = 2,
+  ReturnToLobby = 3,
+}
+
+export enum GamePreferencesSelectedPage {
+  Settings,
+  Keybindings,
+}
+
+export const createSetPreference =
+  (act: typeof sendAct, preference: string) => (value: unknown) => {
+    act('set_preference', {
+      preference,
+      value,
+    });
+  };
+
+export enum PrefsWindow {
+  Character = 0,
+  Game = 1,
+  Keybindings = 2,
+}
+
+export type CharacterPreferencesData = {
+  clothing: Record<string, string>;
+  features: Record<string, string>;
+  game_preferences: Record<string, unknown>;
+  non_contextual: {
+    random_body: RandomSetting;
+    [otherKey: string]: unknown;
+  };
+  secondary_features: Record<string, unknown>;
+  supplemental_features: Record<string, unknown>;
+  manually_rendered_features: Record<string, string>;
+
+  names: Record<string, string>;
+
+  misc: {
+    gender: Gender;
+    joblessrole: JoblessRole;
+    species: string;
+    loadout_list: LoadoutList;
+    job_clothes: BooleanLike;
+  };
+
+  randomization: Record<string, RandomSetting>;
+};
+
+export type PreferencesMenuData = {
+  sierra_antagonist?: AntagonistBackground; // BANDASTATION ADDITION - Private background
+  sierra_background: BackgroundPreference[]; // BANDASTATION ADDITION - Sierra background
+  character_preview_view: string;
+  character_profiles: (string | null)[];
+
+  character_preferences: CharacterPreferencesData;
+
+  content_unlocked: BooleanLike;
+
+  job_bans?: string[];
+  job_days_left?: Record<string, number>;
+  job_required_experience?: Record<
+    string,
+    {
+      experience_type: string;
+      required_playtime: number;
+    }
+  >;
+  job_preferences: JobPreference[];
+
+  keybindings: Record<string, string[]>;
+  overflow_role: string;
+  default_quirk_balance: number;
+  selected_quirks: string[];
+  selected_personalities: typePath[] | null;
+  max_personalities: number;
+  species_disallowed_quirks: string[];
+
+  antag_bans?: string[];
+  antag_days_left?: Record<string, number>;
+  selected_antags: string[];
+
+  active_slot: number;
+  name_to_use: string;
+  window: PrefsWindow;
+
+  // BANDASTATION ADDITION START
+  donator_level: number;
+  tts_seed: string;
+  tts_enabled: BooleanLike;
+
+  incompatible_body_modifications: string[];
+  applied_body_modifications: string[];
+  manufacturers: Record<string, string[]>;
+  selected_manufacturer: Record<string, string>;
+  // BANDASTATION ADDITION END
+};
+
+// BANDASTATION ADDITION START
+export type BackgroundCategory =
+  | 'culture'
+  | 'homeworld'
+  | 'faction'
+  | 'subfaction'
+  | 'social'
+  | 'religion';
+
+export type BackgroundEntry = {
+  name: string;
+  description: string;
+  extra?: string;
+  faction?: string;
+};
+
+export type BackgroundPreference = {
+  category: BackgroundCategory;
+  preference: string;
+  label: string;
+  value: string;
+  choices: string[];
+  context_choices?: string[];
+  choice_children?: Record<string, string[]>;
+  choice_effects?: Record<string, string[]>;
+  notes?: string;
+  notes_preference?: string;
+  notes_max_length?: number;
+  notes_prompt?: string;
+  invalid_reason?: string;
+  reset_reason?: string;
+  selected_name?: string;
+  empty_reason?: string;
+  language_names?: string[];
+  name_generation?: string;
+};
+
+export type AntagonistBackgroundChoice = {
+  preference: string;
+  value: string;
+  choices: { id: string; name: string; description: string }[];
+  invalid_reason?: string;
+  selected_name?: string;
+  empty_reason?: string;
+};
+
+export type AntagonistBackground = {
+  organization: AntagonistBackgroundChoice;
+  subgroup?: AntagonistBackgroundChoice;
+  notes: {
+    preference: string;
+    value: string;
+    max_length: number;
+    prompt: string;
+  };
+};
+
+export type Seed = {
+  name: string;
+  value: string;
+  category: string;
+  gender: string;
+  provider: string;
+  donator_level: number;
+};
+
+export type TtsProvider = {
+  name: string;
+  is_enabled: BooleanLike;
+};
+
+export type TtsData = {
+  providers: Array<TtsProvider>;
+  seeds: Array<Seed>;
+  phrases: string[];
+};
+
+export type BodyModification = {
+  key: string;
+  name: string;
+  category: string;
+  description: string;
+  cost: number;
+  manufacturers?: Record<string, string>;
+  selectedManufacturer?: string;
+};
+// BANDASTATION ADDITION END
+
+export type ServerData = {
+  // BANDASTATION ADDITION START
+  sierra_background?: Record<
+    BackgroundCategory,
+    Record<string, BackgroundEntry>
+  >;
+  text_to_speech: TtsData;
+  body_modifications: BodyModification[];
+  // BANDASTATION ADDITION END
+  jobs: {
+    departments: Record<string, Department>;
+    jobs: Record<string, Job>;
+    jobs_sorted: string[];
+  };
+  names: {
+    types: Record<string, Name>;
+  };
+  quirks: QuirkInfo;
+  personality: {
+    personalities: Personality[];
+    personality_incompatibilities: Record<string, string[]>;
+  };
+  random: {
+    randomizable: string[];
+  };
+  loadout: {
+    loadout_tabs: LoadoutCategory[];
+  };
+  species: Record<string, Species>;
+  [otherKey: string]: unknown;
+};

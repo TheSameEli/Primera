@@ -1,0 +1,4 @@
+author: "mo0niverse"
+delete-after: True
+changes:
+  - bugfix: "Освещение зажигалок Zippo теперь меняет цвет при перекраске."

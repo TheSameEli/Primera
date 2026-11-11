@@ -1,0 +1,10 @@
+# AI EDIT START - Split the imported name into its required translation fragment.
+["Wolf's Doom helmet"]
+nominative = "шлем «Волчья Погибель»"
+genitive = "шлема «Волчья Погибель»"
+dative = "шлему «Волчья Погибель»"
+accusative = "шлем «Волчья Погибель»"
+instrumental = "шлемом «Волчья Погибель»"
+prepositional = "шлеме «Волчья Погибель»"
+gender = "male"
+# AI EDIT END

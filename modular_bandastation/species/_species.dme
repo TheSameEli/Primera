@@ -1,0 +1,125 @@
+#include "_species.dm"
+
+#include "code/_globalvars/lists.dm"
+
+#include "code/clothing/items.dm"
+
+#include "code/human/species/skills.dm"
+#include "code/human/species_type/moth.dm"
+#include "code/human/species_type/ipc.dm"
+#include "code/human/species_type/skrell.dm"
+#include "code/human/species_type/tajaran.dm"
+#include "code/human/species_type/vulpkanin.dm"
+
+#include "code/human/sprite_accessories/skrell/skrell_cloth_wrap.dm"
+#include "code/human/sprite_accessories/skrell/skrell_cloth_wrap_toggle.dm"
+#include "code/human/sprite_accessories/skrell/skrell_head_tentacles.dm"
+#include "code/human/sprite_accessories/skrell/skrell_ornament.dm"
+
+#include "code/human/sprite_accessories/vulpkanin/vulpkanin_chest_markings.dm"
+#include "code/human/sprite_accessories/vulpkanin/vulpkanin_limb_markings.dm"
+#include "code/human/sprite_accessories/vulpkanin/vulpkanin_facial_hair.dm"
+#include "code/human/sprite_accessories/vulpkanin/vulpkanin_head_markings.dm"
+#include "code/human/sprite_accessories/vulpkanin/vulpkanin_tail_markings.dm"
+#include "code/human/sprite_accessories/vulpkanin/vulpkanin_tails.dm"
+
+#include "code/human/sprite_accessories/tajaran/tajaran_chest_markings.dm"
+#include "code/human/sprite_accessories/tajaran/tajaran_limb_markings.dm"
+#include "code/human/sprite_accessories/tajaran/tajaran_facial_hair.dm"
+#include "code/human/sprite_accessories/tajaran/tajaran_head_markings.dm"
+#include "code/human/sprite_accessories/tajaran/tajaran_tail_markings.dm"
+#include "code/human/sprite_accessories/tajaran/tajaran_tails.dm"
+
+#include "code/human/sprite_accessories/hair.dm"
+#include "code/human/sprite_accessories/ipc/ipc_appearance.dm"
+#include "code/human/ipc_display.dm"
+#include "code/human/ipc_emotes.dm"
+#include "code/human/blood_types.dm"
+#include "code/human/carbon.dm"
+
+#include "code/language/canilunzt.dm"
+#include "code/language/qurvolious.dm"
+#include "code/language/siiktajr.dm"
+#include "code/language/spinwarder.dm"
+
+#include "code/preferences/species_features/skrell/skrell_head_tentacle.dm"
+#include "code/preferences/species_features/skrell/skrell_tentacle_ornament.dm"
+#include "code/preferences/species_features/skrell/skrell_cloth_wrap.dm"
+#include "code/preferences/species_features/skrell/skrell_cloth_wrap_toggle.dm"
+#include "code/preferences/species_features/skrell/skrell_cloth_wrap_color.dm"
+#include "code/preferences/species_features/ipc.dm"
+
+#include "code/preferences/species_features/tajaran/body_markings/tajaran_chest_markings.dm"
+#include "code/preferences/species_features/tajaran/body_markings/tajaran_limb_markings.dm"
+#include "code/preferences/species_features/tajaran/body_markings/tajaran_body_markings_color.dm"
+#include "code/preferences/species_features/tajaran/facial_hair/tajaran_facial_hair.dm"
+#include "code/preferences/species_features/tajaran/facial_hair/tajaran_facial_hair_color.dm"
+#include "code/preferences/species_features/tajaran/head_markings/tajaran_head_markings.dm"
+#include "code/preferences/species_features/tajaran/head_markings/tajaran_head_markings_color.dm"
+#include "code/preferences/species_features/tajaran/tail/tail_tajaran.dm"
+#include "code/preferences/species_features/tajaran/tail_markings/tajaran_tail_markings.dm"
+#include "code/preferences/species_features/tajaran/tail_markings/tajaran_tail_markings_color.dm"
+
+#include "code/preferences/species_features/vulpkanin/body_markings/vulpkanin_limb_markings.dm"
+#include "code/preferences/species_features/vulpkanin/body_markings/vulpkanin_chest_markings.dm"
+#include "code/preferences/species_features/vulpkanin/body_markings/vulpkanin_body_markings_color.dm"
+#include "code/preferences/species_features/vulpkanin/facial_hair/vulpkanin_facial_hair.dm"
+#include "code/preferences/species_features/vulpkanin/facial_hair/vulpkanin_facial_hair_color.dm"
+#include "code/preferences/species_features/vulpkanin/head_markings/vulpkanin_head_markings.dm"
+#include "code/preferences/species_features/vulpkanin/head_markings/vulpkanin_head_markings_color.dm"
+#include "code/preferences/species_features/vulpkanin/tail/tail_vulpkanin.dm"
+#include "code/preferences/species_features/vulpkanin/tail_markings/vulpkanin_tail_markings.dm"
+#include "code/preferences/species_features/vulpkanin/tail_markings/vulpkanin_tail_markings_color.dm"
+
+#include "code/reagents/mutation.dm"
+
+#include "code/surgery/bodyparts/skrell_bodyparts.dm"
+#include "code/surgery/bodyparts/ipc_bodyparts.dm"
+#include "code/surgery/bodyparts/tajaran_bodyparts.dm"
+#include "code/surgery/bodyparts/vulpkanin_bodyparts.dm"
+
+#include "code/surgery/organs/external/skrell_external.dm"
+#include "code/surgery/organs/external/vulpkanin_external.dm"
+#include "code/surgery/organs/internal/vulpkanin_internal.dm"
+#include "code/surgery/organs/external/tajaran_external.dm"
+#include "code/surgery/organs/internal/tajaran_internal.dm"
+#include "code/surgery/organs/internal/skrell_internal.dm"
+#include "code/surgery/organs/internal/ipc_internal.dm"
+#include "code/surgery/organs/internal/ipc_upgrades.dm"
+#include "code/items/ipc_power_cord.dm"
+#include "code/items/ipc_fabrication.dm"
+#include "code/items/ipc_nanopaste.dm"
+#include "code/preferences/ipc_name.dm"
+#include "code/surgery/organs/limbgrower_designs.dm"
+
+#include "code/human/sprite_accessories/vulpkanin/hair_masks.dm"
+#include "code/species_helpers.dm"
+
+// VOX
+#include "code/human/species_type/vox.dm"
+#include "code/human/sprite_accessories/vox/vox_misc.dm"
+#include "code/human/sprite_accessories/vox/vox_facial_quills.dm"
+#include "code/human/sprite_accessories/vox/vox_quills.dm"
+
+#include "code/surgery/bodyparts/vox_bodyparts.dm"
+#include "code/surgery/organs/internal/vox_internal.dm"
+#include "code/surgery/organs/external/vox_external.dm"
+#include "code/preferences/species_features/vox/snouts/vox_snout_color.dm"
+
+#include "code/language/vox-pidgin.dm"
+
+#include "code/clothing/outfits/vox.dm"
+#include "code/preferences/species_features/vox/facial_quills/vox_facial_quills.dm"
+#include "code/preferences/species_features/vox/facial_quills/vox_facial_quills_color.dm"
+
+#include "code/preferences/species_features/vox/quills/vox_quills.dm"
+#include "code/preferences/species_features/vox/quills/vox_quills_color.dm"
+
+#include "code/preferences/species_features/vox/snouts/vox_snout.dm"
+
+#include "code/human/sprite_accessories/vox/vox_limb_markings.dm"
+#include "code/preferences/species_features/vox/body_markings/vox_limb_markings_color.dm"
+#include "code/human/sprite_accessories/vox/vox_body_markings.dm"
+
+#include "code/preferences/species_features/vox/body_markings/vox_body_markings.dm"
+#include "code/preferences/species_features/vox/body_markings/vox_body_markings_color.dm"

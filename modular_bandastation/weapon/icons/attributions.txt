@@ -1,0 +1,14 @@
+Sidearm choice assets imported from BandaStation PR #2705 by Ingakem:
+https://github.com/ss220club/BandaStation/pull/2705
+Source revision: 3f8c6b043196c66100fddb9e550bf251ea93147a
+
+ranged/ammo.dmi - rechargeable power packs
+ranged/ballistic40x32.dmi - PDH Osprey and Ladon pistols and their skins
+ranged/energy.dmi - X-02 laser pistol
+
+Original asset commits by Ingakem:
+https://github.com/ss220club/BandaStation/commit/07db6f358f3b7e3cde12e62b380d5d9fa69b36a1
+https://github.com/ss220club/BandaStation/commit/d833d834b240479e0f7edf44abbab103172e46a3
+
+License: Creative Commons Attribution-ShareAlike 3.0, per the source repository README.
+https://github.com/ss220club/BandaStation/blob/3f8c6b043196c66100fddb9e550bf251ea93147a/README.md#license

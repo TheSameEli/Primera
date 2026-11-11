@@ -1,0 +1,246 @@
+/datum/outfit/pirate
+	name = "Space Pirate"
+
+	id = /obj/item/card/id/advanced
+	id_trim = /datum/id_trim/pirate
+	uniform = /obj/item/clothing/under/costume/pirate
+	suit = /obj/item/clothing/suit/costume/pirate/armored
+	// AI EDIT START - Support independent left and right ear slots
+	ear_right = /obj/item/radio/headset/syndicate // BANDASTATION EDIT - Dual ear slots
+	// AI EDIT END
+	glasses = /obj/item/clothing/glasses/eyepatch
+	head = /obj/item/clothing/head/costume/pirate/bandana/armored
+	shoes = /obj/item/clothing/shoes/pirate/armored
+
+/datum/outfit/pirate/post_equip(mob/living/carbon/human/equipped)
+	equipped.add_faction(FACTION_PIRATE)
+
+	// AI EDIT START - Support independent left and right ear slots
+	var/obj/item/radio/outfit_radio = equipped.ear_right // BANDASTATION EDIT - Dual ear slots
+	// AI EDIT END
+	if(outfit_radio)
+		outfit_radio.set_frequency(FREQ_SYNDICATE)
+		outfit_radio.freqlock = RADIO_FREQENCY_LOCKED
+
+	var/obj/item/card/id/outfit_id = equipped.wear_id
+	if(outfit_id)
+		outfit_id.registered_name = equipped.real_name
+		outfit_id.update_label()
+		outfit_id.update_icon()
+
+	var/obj/item/clothing/under/pirate_uniform = equipped.w_uniform
+	if(istype(pirate_uniform))
+		pirate_uniform.set_has_sensor(NO_SENSORS)
+		pirate_uniform.set_sensor_mode(SENSOR_OFF)
+
+/datum/outfit/pirate/captain
+	name = "Space Pirate Captain"
+
+	id_trim = /datum/id_trim/pirate/captain
+	head = /obj/item/clothing/head/costume/pirate/armored
+
+/datum/outfit/pirate/captain/skeleton
+	name = "Space Pirate Captain (Skeleton)"
+
+	belt = /obj/item/gun/magic/midas_hand
+	l_pocket = /obj/item/coin/gold/doubloon
+
+/datum/outfit/pirate/space
+	name = "Space Pirate (EVA)"
+
+	suit = /obj/item/clothing/suit/space/pirate
+	suit_store = /obj/item/tank/internals/oxygen
+	head = /obj/item/clothing/head/helmet/space/pirate/bandana
+	mask = /obj/item/clothing/mask/breath
+
+/datum/outfit/pirate/space/captain
+	name = "Space Pirate Captain (EVA)"
+
+	head = /obj/item/clothing/head/helmet/space/pirate
+
+	id_trim = /datum/id_trim/pirate/captain
+
+/datum/outfit/pirate/space/captain/cardboard
+	name = "Space Pirate Captain (EVA)"
+	l_hand = /obj/item/fake_e_cutlass
+
+/obj/item/fake_e_cutlass
+	name = "fake energy cutlass"
+	desc = "Damn, son, where'd you find this? (Tell a coder if you do)"
+	icon = 'icons/obj/weapons/transforming_energy.dmi'
+	icon_state = "e_cutlass_on"
+	inhand_icon_state = "e_cutlass_on"
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	item_flags = ABSTRACT
+
+/datum/outfit/pirate/silverscale
+	name = "Silver Scale Member"
+
+	id = /obj/item/card/id/advanced/silver
+	id_trim = /datum/id_trim/pirate/silverscale
+	uniform = /obj/item/clothing/under/syndicate/sniper
+	suit = /obj/item/clothing/suit/armor/vest/alt
+	back = /obj/item/storage/backpack/satchel
+	glasses = /obj/item/clothing/glasses/monocle
+	gloves = /obj/item/clothing/gloves/color/black
+	head = /obj/item/clothing/head/collectable/tophat
+	shoes = /obj/item/clothing/shoes/laceup
+	implants = list(/obj/item/implant/explosive)
+
+/datum/outfit/pirate/silverscale/captain
+	name = "Silver Scale Captain"
+
+	id_trim = /datum/id_trim/pirate/captain/silverscale
+	head = /obj/item/clothing/head/costume/crown
+	mask = /obj/item/cigarette/cigar/havana
+	l_pocket = /obj/item/lighter
+
+/datum/outfit/pirate/interdyne
+	name = "Ex-Interdyne Pharmacist"
+
+	id = /obj/item/card/id/advanced/black
+	id_trim = /datum/id_trim/syndicom/Interdyne/pharmacist
+	uniform = /obj/item/clothing/under/rank/medical/scrubs/coroner
+	suit = /obj/item/clothing/suit/toggle/labcoat
+	back = /obj/item/storage/backpack/satchel/med
+	glasses = /obj/item/clothing/glasses/hud/health/night
+	gloves = /obj/item/clothing/gloves/color/black
+	head = /obj/item/clothing/head/utility/surgerycap/black
+	shoes = /obj/item/clothing/shoes/sneakers/white
+	l_pocket = /obj/item/card/emag/doorjack
+
+/datum/outfit/pirate/interdyne/captain
+	name = "Ex-Interdyne Senior Resident"
+
+	id_trim = /datum/id_trim/syndicom/Interdyne/pharmacist_director
+
+/datum/outfit/pirate/grey
+	name = "The Grey Tide"
+
+	id = /obj/item/card/id/advanced/chameleon
+	uniform = /obj/item/clothing/under/color/grey/ancient
+	suit = null
+	back = /obj/item/storage/backpack/satchel
+	mask = /obj/item/clothing/mask/chameleon
+	glasses = null
+	head = null
+	shoes = /obj/item/clothing/shoes/sneakers/black
+	l_pocket = /obj/item/reagent_containers/cup/glass/coffee
+	r_pocket = /obj/item/tank/internals/emergency_oxygen
+
+/datum/outfit/pirate/irs
+	name = "IRS Agent Outfit"
+	id = /obj/item/card/id/advanced
+	id_trim = /datum/id_trim/syndicom/irs
+	uniform = /obj/item/clothing/under/costume/buttondown/slacks
+	suit = /obj/item/clothing/suit/costume/irs
+	back = null
+	glasses = /obj/item/clothing/glasses/sunglasses
+	gloves = null
+	head = /obj/item/clothing/head/costume/irs
+	shoes = /obj/item/clothing/shoes/laceup
+	// AI EDIT START - Support independent left and right ear slots
+	ear_right = /obj/item/radio/headset/syndicate/alt // BANDASTATION EDIT - Dual ear slots
+	// AI EDIT END
+
+/datum/outfit/pirate/irs/auditor
+	name = "IRS Head Auditor"
+	id_trim = /datum/id_trim/syndicom/irs/auditor
+	uniform = /obj/item/clothing/under/suit/charcoal
+	neck = /obj/item/clothing/neck/tie/red/tied
+	suit = null
+	// AI EDIT START - Support independent left and right ear slots
+	ear_right = /obj/item/radio/headset/syndicate/alt/leader // BANDASTATION EDIT - Dual ear slots
+	// AI EDIT END
+	head = null
+	accessory = /obj/item/clothing/accessory/holster/detective/veteran_advisor //BANDASTATION EDIT: Accessory holsters
+
+/datum/outfit/pirate/lustrous
+	name = "Lustrous Scintillant"
+
+	id = /obj/item/card/id/advanced/black
+	uniform = /obj/item/clothing/under/ethereal_tunic
+	suit = /obj/item/clothing/suit/hooded/ethereal_raincoat
+	back = /obj/item/storage/backpack/satchel
+	gloves = /obj/item/clothing/gloves/combat
+	shoes = /obj/item/clothing/shoes/bhop
+	l_pocket = /obj/item/switchblade
+
+/datum/outfit/pirate/lustrous/captain
+	name = "Lustrous Radiant"
+
+	glasses = null
+	suit = /obj/item/clothing/suit/jacket/oversized
+	head = /obj/item/clothing/head/costume/crown
+
+	id_trim = /datum/id_trim/pirate/captain
+
+/datum/outfit/pirate/medieval
+	name = "Medieval Warmonger"
+
+	id = null
+	glasses = null
+	uniform = /obj/item/clothing/under/costume/gamberson/military
+	suit = /obj/item/clothing/suit/armor/vest/military
+	suit_store = /obj/item/spear/military
+	back = /obj/item/storage/backpack/satchel/leather
+	gloves = /obj/item/clothing/gloves/color/brown
+	head = /obj/item/clothing/head/helmet/military
+	mask = /obj/item/clothing/mask/balaclava
+	shoes = /obj/item/clothing/shoes/workboots
+	belt = /obj/item/claymore/shortsword
+	l_pocket = /obj/item/flashlight/flare/torch
+
+/datum/outfit/pirate/medieval/warlord
+	name = "Medieval Warlord"
+
+	neck = /obj/item/bedsheet/pirate
+	suit = /obj/item/clothing/suit/armor/riot/knight/warlord
+	suit_store = null
+	back = /obj/item/fireaxe/boardingaxe
+	gloves = /obj/item/clothing/gloves/combat
+	head = /obj/item/clothing/head/helmet/knight/warlord
+	mask = /obj/item/clothing/mask/breath
+	shoes = /obj/item/clothing/shoes/bronze
+	belt = /obj/item/gun/magic/hook
+	l_pocket = /obj/item/tank/internals/emergency_oxygen
+	r_pocket = /obj/item/flashlight/lantern
+
+
+	skillchips = list(/obj/item/skillchip/big_pointer) //they don't have an id, so this is needed
+
+/datum/outfit/pirate/siren
+	name = "Siren Shimai"
+
+	uniform = /obj/item/clothing/under/color/jumpskirt/random
+	head = null
+	neck = /obj/item/clothing/neck/necklace/pearl/abyss
+	back = /obj/item/instrument/eguitar
+	glasses = null
+	suit = /obj/item/clothing/suit/jacket/leather/armored
+	gloves = /obj/item/clothing/gloves/fingerless
+	shoes = null
+	// AI EDIT START - Support independent left and right ear slots
+	ear_right = /obj/item/radio/headset/syndicate/alt // BANDASTATION EDIT - Dual ear slots
+	// AI EDIT END
+	id = null
+
+	skillchips = list(/obj/item/skillchip/musical)
+
+/datum/outfit/pirate/siren/pre_equip(mob/living/carbon/human/pre_equipped, visuals_only)
+	. = ..()
+	if(rand(0,5) == 1)
+		head = /obj/item/clothing/head/soft/black
+	belt = pick(subtypesof(/obj/item/flashlight/glowstick))
+
+/datum/outfit/pirate/siren/post_equip(mob/living/carbon/human/equipped)
+	. = ..()
+	var/obj/item/clothing/head/soft/cap = equipped.get_item_by_slot(ITEM_SLOT_HEAD)
+	if(cap && rand(0,1) == 1)
+		cap.flip(equipped)
+	var/obj/item/clothing/under/uniform = equipped.get_item_by_slot(ITEM_SLOT_ICLOTHING)
+	if(uniform && !istype(uniform, /obj/item/clothing/under/color/jumpskirt/rainbow))//kek...
+		uniform.rolldown(equipped)
+	equipped.update_lips("lipstick_lower", COLOR_BLACK)
+	equipped.adjust_wet_stacks(-3)

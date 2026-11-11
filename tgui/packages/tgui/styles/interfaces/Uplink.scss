@@ -1,0 +1,41 @@
+$titlebarGradient: linear-gradient(
+  to right,
+  hsl(36, 38%, 44%),
+  hsl(36, 33%, 19%),
+  hsl(36, 38%, 44%)
+);
+
+.UplinkObjective__Titlebar {
+  background-image: $titlebarGradient;
+  padding: var(--space-ml) var(--space-l) var(--space-m);
+  font-weight: bold;
+  border: var(--border-thickness-small) solid var(--color-black);
+  border-bottom: none;
+  border-top-left-radius: var(--border-radius-huge);
+  border-top-right-radius: var(--border-radius-huge);
+}
+
+.UplinkObjective__EmptyObjective {
+  background-color: hsla(0, 0%, 0%, 0.4);
+  border: var(--border-thickness-small) solid var(--color-black);
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  vertical-align: center;
+}
+
+.UplinkObjective__Content {
+  background-color: hsla(0, 0%, 0%, 0.4);
+  border: var(--border-thickness-small) solid var(--color-black);
+  border-top: none;
+  border-bottom: none;
+  padding: var(--space-l);
+}
+
+.UplinkObjective__Footer {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: var(--border-thickness-small) solid var(--color-black);
+  border-top: none;
+  padding: var(--space-m) 0 var(--space-l);
+}

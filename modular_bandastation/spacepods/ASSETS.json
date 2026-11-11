@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/ss220-space/Paradise",
+  "revision": "38015e8f1ad32d0812874a7b06090d7d09a5888c",
+  "attribution": [
+    "Goonstation contributors (assets under icons/goonstation/)",
+    "ParadiseSS13/Paradise contributors",
+    "ss220-space/Paradise contributors"
+  ],
+  "license_declaration": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/README.md#license",
+  "hash_algorithm": "SHA-256",
+  "path_base": "modular_bandastation/spacepods",
+  "source_code": [
+    {
+      "source_path": "code/modules/spacepods/spacepod.dm",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/code/modules/spacepods/spacepod.dm",
+      "license": "AGPL-3.0",
+      "license_file": "LICENSE-CODE.txt"
+    },
+    {
+      "source_path": "code/modules/spacepods/equipment.dm",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/code/modules/spacepods/equipment.dm",
+      "license": "AGPL-3.0",
+      "license_file": "LICENSE-CODE.txt"
+    },
+    {
+      "source_path": "code/modules/spacepods/parts.dm",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/code/modules/spacepods/parts.dm",
+      "license": "AGPL-3.0",
+      "license_file": "LICENSE-CODE.txt"
+    },
+    {
+      "source_path": "code/modules/spacepods/construction.dm",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/code/modules/spacepods/construction.dm",
+      "license": "AGPL-3.0",
+      "license_file": "LICENSE-CODE.txt"
+    },
+    {
+      "source_path": "code/modules/spacepods/lock_buster.dm",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/code/modules/spacepods/lock_buster.dm",
+      "license": "AGPL-3.0",
+      "license_file": "LICENSE-CODE.txt"
+    },
+    {
+      "source_path": "code/game/jobs/job/science.dm",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/code/game/jobs/job/science.dm",
+      "license": "AGPL-3.0",
+      "license_file": "LICENSE-CODE.txt"
+    },
+    {
+      "source_path": "code/modules/research/designs/spacepod_designs.dm",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/code/modules/research/designs/spacepod_designs.dm",
+      "license": "AGPL-3.0",
+      "license_file": "LICENSE-CODE.txt"
+    },
+    {
+      "source_path": "code/game/machinery/computer/pod_tracking_console.dm",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/code/game/machinery/computer/pod_tracking_console.dm",
+      "license": "AGPL-3.0",
+      "license_file": "LICENSE-CODE.txt"
+    }
+  ],
+  "assets": [
+    {
+      "file": "icons/locator.dmi",
+      "source_path": "icons/spacepods_paradise/locator.dmi",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/icons/spacepods_paradise/locator.dmi",
+      "source_git_blob": "04372b2f65eaa78fb35bfef3842c8c084c611556",
+      "license": "CC-BY-SA-3.0",
+      "license_file": "LICENSE-ASSETS-CC-BY-SA-3.0.txt",
+      "source_sha256": "fa9cd80f5079a8d23a21c7781a8e8913d474e683fe4cb272b91a9be0b5c04d25",
+      "sha256": "fa9cd80f5079a8d23a21c7781a8e8913d474e683fe4cb272b91a9be0b5c04d25",
+      "changes": "Unmodified byte-for-byte copy"
+    },
+    {
+      "file": "icons/spacepod.dmi",
+      "source_path": "icons/obj/spacepod.dmi",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/icons/obj/spacepod.dmi",
+      "source_git_blob": "54edb864aba2f28c995cfde7da069596d3991ed9",
+      "license": "CC-BY-SA-3.0",
+      "license_file": "LICENSE-ASSETS-CC-BY-SA-3.0.txt",
+      "source_sha256": "e24d869b86cf5dd8877f33d7516711c6f5d3c2035239a3d1cc35b9d8393797b6",
+      "sha256": "e24d869b86cf5dd8877f33d7516711c6f5d3c2035239a3d1cc35b9d8393797b6",
+      "changes": "Unmodified byte-for-byte copy"
+    },
+    {
+      "file": "icons/pods.dmi",
+      "source_path": "icons/goonstation/48x48/pods.dmi",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/icons/goonstation/48x48/pods.dmi",
+      "source_git_blob": "e7c2ab840f539d32324dc29a829a5e5ba280ee4c",
+      "license": "CC-BY-NC-SA-3.0",
+      "license_file": "LICENSE-ASSETS-CC-BY-NC-SA-3.0.txt",
+      "source_sha256": "3d78617a6a615e2c5d9f20c4e524206ab36a3ba4541c8f784a08c200593043ef",
+      "sha256": "3d78617a6a615e2c5d9f20c4e524206ab36a3ba4541c8f784a08c200593043ef",
+      "changes": "Unmodified byte-for-byte copy"
+    },
+    {
+      "file": "icons/pod_construction.dmi",
+      "source_path": "icons/goonstation/48x48/pod_construction.dmi",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/icons/goonstation/48x48/pod_construction.dmi",
+      "source_git_blob": "aedd1e202bf865d4f38b420736c1f98ae6057f97",
+      "license": "CC-BY-NC-SA-3.0",
+      "license_file": "LICENSE-ASSETS-CC-BY-NC-SA-3.0.txt",
+      "source_sha256": "e9623388ea51bd5759b8eea77cb3e79e5e33d66cf9a1b6a423f8d1ef742b1a27",
+      "sha256": "e9623388ea51bd5759b8eea77cb3e79e5e33d66cf9a1b6a423f8d1ef742b1a27",
+      "changes": "Unmodified byte-for-byte copy"
+    },
+    {
+      "file": "icons/pod_parts.dmi",
+      "source_path": "icons/goonstation/pods/pod_parts.dmi",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/icons/goonstation/pods/pod_parts.dmi",
+      "source_git_blob": "8a8fd6e8f664b0ccab632677d56a304b182bea36",
+      "license": "CC-BY-NC-SA-3.0",
+      "license_file": "LICENSE-ASSETS-CC-BY-NC-SA-3.0.txt",
+      "source_sha256": "3e6adcecd3a09d456768408d5eca0dd2ca0fe84c1028a3666df261b423317231",
+      "sha256": "3e6adcecd3a09d456768408d5eca0dd2ca0fe84c1028a3666df261b423317231",
+      "changes": "Unmodified byte-for-byte copy"
+    },
+    {
+      "file": "icons/ship.dmi",
+      "source_path": "icons/goonstation/pods/ship.dmi",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/icons/goonstation/pods/ship.dmi",
+      "source_git_blob": "663e27fff41ce8d912e09ce3c619e33326621b53",
+      "license": "CC-BY-NC-SA-3.0",
+      "license_file": "LICENSE-ASSETS-CC-BY-NC-SA-3.0.txt",
+      "source_sha256": "77acd2b596d960b571ed793059e95a4e2f8f84c754ade0a19c35614bf2e2ac1c",
+      "sha256": "77acd2b596d960b571ed793059e95a4e2f8f84c754ade0a19c35614bf2e2ac1c",
+      "changes": "Unmodified byte-for-byte copy"
+    }
+  ],
+  "license_files": [
+    {
+      "file": "LICENSE-CODE.txt",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/LICENSE-AGPLv3.txt",
+      "sha256": "57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6"
+    },
+    {
+      "file": "LICENSE-ASSETS-CC-BY-SA-3.0.txt",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/LICENSE-CC-BY-SA-3.0.txt",
+      "sha256": "3f941b3b89cf7b8370ceb83cc76d2120d471b58735d8ca60238a751a48d7f72f"
+    },
+    {
+      "file": "LICENSE-ASSETS-CC-BY-NC-SA-3.0.txt",
+      "source_url": "https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/LICENSE-CC-BY-NC-SA-3.0.txt",
+      "sha256": "8812f83442fd0eca14eb0208988e190fdcbfebec58fa5459d3218edfdfdc5a32"
+    }
+  ]
+}

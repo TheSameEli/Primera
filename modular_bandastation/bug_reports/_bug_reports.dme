@@ -1,0 +1,2 @@
+#include "_bug_reports.dm"
+#include "code/bug_reports.dm"

@@ -1,0 +1,4 @@
+#include "_quirks.dm"
+#include "code/cybernetic_rejection.dm"
+#include "code/porphyria.dm"
+#include "code/porphyria_effects.dm"

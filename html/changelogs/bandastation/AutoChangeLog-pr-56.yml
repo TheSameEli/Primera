@@ -1,0 +1,4 @@
+author: "Fullonibus"
+delete-after: True
+changes:
+  - code_imp: "Таблицы спрайтов надетых предметов создаются обычными getter без переключения режима загрузчика атомов."

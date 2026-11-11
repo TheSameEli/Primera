@@ -1,0 +1,1506 @@
+{
+  "schema_version": 1,
+  "description": "Подтверждённая структура и ограничения предыстории BandaStation. Контекст территории не является запретом без residence_restricted=true.",
+  "factions": {
+    "Imperium": {
+      "kind": "state",
+      "residence_factions": [
+        "Imperium"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/nations.ts",
+        "https://docs.google.com/document/d/1P7V3f8wYtwZG-bTS3BoCAukU_MAoudYZQ6HYnr6d9Oo/edit?tab=t.cml83k5yovgc"
+      ]
+    },
+    "TSF": {
+      "kind": "state",
+      "residence_factions": [
+        "TSF"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/nations.ts",
+        "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit"
+      ]
+    },
+    "Nanotrasen": {
+      "kind": "corporation",
+      "residence_factions": [
+        "Nanotrasen"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/nations.ts",
+        "https://docs.google.com/document/d/1501jy_u_OdE3sbNr3HkYhDi31HVn9qKNHv96TDfxKoI/edit"
+      ]
+    },
+    "Elysium": {
+      "kind": "state",
+      "residence_factions": [
+        "Elysium"
+      ],
+      "residence_restricted": false,
+      "allowed_species": [
+        "human"
+      ],
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/nations.ts",
+        "https://docs.google.com/document/d/1G6Pbt6bBRlFh0gdaBd42-mXLys5uAUGQ4C3hTVXeq3g/edit"
+      ]
+    },
+    "CUSP": {
+      "kind": "state",
+      "residence_factions": [
+        "CUSP"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/nations.ts",
+        "https://docs.google.com/document/d/1g_YzWFeRvysCS1KPnmi5k3lEyKThyDhkBIJExsZAop8/edit"
+      ]
+    },
+    "Free": {
+      "kind": "sector",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/nations.ts",
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "Unathi": {
+      "kind": "state",
+      "residence_factions": [
+        "Unathi"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/nations.ts"
+      ]
+    },
+    "Drask": {
+      "kind": "state",
+      "residence_factions": [
+        "Drask"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/nations.ts",
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "Gray": {
+      "kind": "state",
+      "residence_factions": [
+        "Gray"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/nations.ts"
+      ]
+    },
+    "TF_LibertyDemocracy": {
+      "kind": "party",
+      "parent": "TSF",
+      "relationship": "political_alliance",
+      "residence_factions": [
+        "TSF"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit"
+      ]
+    },
+    "TF_ProgressiveCitizens": {
+      "kind": "party",
+      "parent": "TSF",
+      "relationship": "political_alliance",
+      "residence_factions": [
+        "TSF"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit"
+      ]
+    },
+    "TF_EnterpriseTrade": {
+      "kind": "party",
+      "parent": "TSF",
+      "relationship": "political_alliance",
+      "residence_factions": [
+        "TSF"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit"
+      ]
+    },
+    "SK_Imperialists": {
+      "kind": "party",
+      "parent": "Imperium",
+      "relationship": "political_current",
+      "residence_factions": [
+        "Imperium"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1P7V3f8wYtwZG-bTS3BoCAukU_MAoudYZQ6HYnr6d9Oo/edit?tab=t.cml83k5yovgc"
+      ]
+    },
+    "SK_Reactionaries": {
+      "kind": "party",
+      "parent": "Imperium",
+      "relationship": "political_current",
+      "residence_factions": [
+        "Imperium"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1P7V3f8wYtwZG-bTS3BoCAukU_MAoudYZQ6HYnr6d9Oo/edit?tab=t.cml83k5yovgc"
+      ]
+    },
+    "SK_Reformers": {
+      "kind": "party",
+      "parent": "Imperium",
+      "relationship": "political_current",
+      "residence_factions": [
+        "Imperium"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1P7V3f8wYtwZG-bTS3BoCAukU_MAoudYZQ6HYnr6d9Oo/edit?tab=t.cml83k5yovgc"
+      ]
+    },
+    "CU_Siberists": {
+      "kind": "party",
+      "parent": "CUSP",
+      "relationship": "ideological_current",
+      "residence_factions": [
+        "CUSP"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1g_YzWFeRvysCS1KPnmi5k3lEyKThyDhkBIJExsZAop8/edit"
+      ]
+    },
+    "CU_Zimovists": {
+      "kind": "party",
+      "parent": "CUSP",
+      "relationship": "ideological_current",
+      "residence_factions": [
+        "CUSP"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1g_YzWFeRvysCS1KPnmi5k3lEyKThyDhkBIJExsZAop8/edit"
+      ]
+    },
+    "KidanRepublic": {
+      "kind": "state",
+      "previous_parent": "Free",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "Adomai": {
+      "kind": "sector",
+      "previous_parent": "Free",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "Seekers": {
+      "kind": "organization",
+      "parent": "Free",
+      "relationship": "regional_triumvirate",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "SeekersWings": {
+      "kind": "organization",
+      "parent": "Seekers",
+      "relationship": "seeker_group",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "SeekersClaws": {
+      "kind": "organization",
+      "parent": "Seekers",
+      "relationship": "seeker_group",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "SeekersTails": {
+      "kind": "organization",
+      "parent": "Seekers",
+      "relationship": "seeker_group",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "FreeCartel": {
+      "kind": "organization",
+      "parent": "Free",
+      "relationship": "regional_triumvirate",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "OrdoLex": {
+      "kind": "organization",
+      "parent": "Free",
+      "relationship": "regional_triumvirate",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "ElysiumSmallLight": {
+      "kind": "organization",
+      "parent": "Elysium",
+      "relationship": "political_program",
+      "residence_factions": [
+        "Elysium"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1G6Pbt6bBRlFh0gdaBd42-mXLys5uAUGQ4C3hTVXeq3g/edit"
+      ]
+    },
+    "ElysiumGreenExpansion": {
+      "kind": "organization",
+      "parent": "Elysium",
+      "relationship": "political_program",
+      "residence_factions": [
+        "Elysium"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1G6Pbt6bBRlFh0gdaBd42-mXLys5uAUGQ4C3hTVXeq3g/edit"
+      ]
+    },
+    "Cybersun": {
+      "kind": "corporation",
+      "source_refs": [
+        "https://docs.google.com/document/d/19mrbp932YtIzZVEPi-R0Y4DqsO9JFeEBz7TMo4rqOBs/edit"
+      ]
+    },
+    "Interdyne": {
+      "kind": "corporation",
+      "source_refs": [
+        "https://docs.google.com/document/d/19mrbp932YtIzZVEPi-R0Y4DqsO9JFeEBz7TMo4rqOBs/edit"
+      ]
+    },
+    "Donk": {
+      "kind": "corporation",
+      "source_refs": [
+        "https://docs.google.com/document/d/19mrbp932YtIzZVEPi-R0Y4DqsO9JFeEBz7TMo4rqOBs/edit"
+      ]
+    },
+    "GalAndSons": {
+      "kind": "corporation",
+      "parent": "Nanotrasen",
+      "relationship": "subsidiary",
+      "residence_factions": [
+        "Nanotrasen"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1501jy_u_OdE3sbNr3HkYhDi31HVn9qKNHv96TDfxKoI/edit"
+      ]
+    },
+    "NanoFax": {
+      "kind": "corporation",
+      "parent": "Nanotrasen",
+      "relationship": "subsidiary",
+      "residence_factions": [
+        "Nanotrasen"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1501jy_u_OdE3sbNr3HkYhDi31HVn9qKNHv96TDfxKoI/edit"
+      ]
+    },
+    "SecTech": {
+      "kind": "corporation",
+      "parent": "Nanotrasen",
+      "relationship": "subsidiary",
+      "residence_factions": [
+        "Nanotrasen"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1501jy_u_OdE3sbNr3HkYhDi31HVn9qKNHv96TDfxKoI/edit"
+      ]
+    },
+    "NTAmmunition": {
+      "kind": "corporation",
+      "parent": "Nanotrasen",
+      "relationship": "subsidiary",
+      "residence_factions": [
+        "Nanotrasen"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1501jy_u_OdE3sbNr3HkYhDi31HVn9qKNHv96TDfxKoI/edit"
+      ]
+    },
+    "NTSC": {
+      "kind": "corporation",
+      "parent": "Nanotrasen",
+      "relationship": "subsidiary",
+      "residence_factions": [
+        "Nanotrasen"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1501jy_u_OdE3sbNr3HkYhDi31HVn9qKNHv96TDfxKoI/edit"
+      ]
+    },
+    "NanoStream": {
+      "kind": "corporation",
+      "parent": "Nanotrasen",
+      "relationship": "subsidiary",
+      "residence_factions": [
+        "Nanotrasen"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1501jy_u_OdE3sbNr3HkYhDi31HVn9qKNHv96TDfxKoI/edit"
+      ]
+    },
+    "KanashiTech": {
+      "kind": "corporation",
+      "source_refs": [
+        "https://docs.google.com/document/d/1501jy_u_OdE3sbNr3HkYhDi31HVn9qKNHv96TDfxKoI/edit"
+      ]
+    },
+    "ExagonIchiwaka": {
+      "kind": "corporation",
+      "parent": "FreeCartel",
+      "relationship": "cartel_member",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "WitherVit": {
+      "kind": "corporation",
+      "parent": "FreeCartel",
+      "relationship": "cartel_member",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "HumanRealm": {
+      "kind": "corporation",
+      "parent": "FreeCartel",
+      "relationship": "cartel_member",
+      "residence_factions": [
+        "Free"
+      ],
+      "residence_restricted": false,
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "none": {
+      "kind": "organization"
+    }
+  },
+  "context_pools": {
+    "semantic_note": "Это основной пул для удобства выбора, а не запреты совместимости. Он пересекается с авторитетным списком допустимых вариантов; остальные допустимые значения доступны через другую среду или диаспору. Нынешние фракция и место жительства не определяют прошлое воспитание. Вложенные группы наследуют контекст ближайшего указанного предка. Лимнея подчиняется обычным контекстным правилам; нейтральное значение other всегда входит в основной пул.",
+    "source_refs": [
+      "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit",
+      "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit",
+      "https://docs.google.com/document/d/1g_YzWFeRvysCS1KPnmi5k3lEyKThyDhkBIJExsZAop8/edit",
+      "https://docs.google.com/document/d/1G6Pbt6bBRlFh0gdaBd42-mXLys5uAUGQ4C3hTVXeq3g/edit",
+      "https://docs.google.com/document/d/1P7V3f8wYtwZG-bTS3BoCAukU_MAoudYZQ6HYnr6d9Oo/edit?tab=t.cml83k5yovgc",
+      "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+      "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts",
+      "https://bs.ss220.club/index.php?title=Ниан&oldid=78416",
+      "https://bs.ss220.club/index.php?title=Плазмамен&oldid=78688",
+      "https://bs.ss220.club/index.php?title=Эфериал&oldid=75007"
+    ],
+    "faction_worlds": {
+      "Seekers": [
+        "Altam",
+        "NewBrazil"
+      ],
+      "FreeCartel": [
+        "Ksarksis",
+        "Limneya",
+        "Inka",
+        "GroundFerrum",
+        "Kolfman",
+        "Avafeus",
+        "Ayrone"
+      ],
+      "OrdoLex": [
+        "Hirkha",
+        "NewHarmony",
+        "Avalon",
+        "Nimue"
+      ],
+      "Adomai": [
+        "Adomai",
+        "Iluk"
+      ],
+      "KidanRepublic": [
+        "Aurum"
+      ]
+    },
+    "world_cultures": {
+      "Venus": [
+        "tsf_solar"
+      ],
+      "Earth": [
+        "tsf_solar",
+        "earth_upbringing"
+      ],
+      "Moon": [
+        "tsf_solar",
+        "moon_upbringing"
+      ],
+      "Mars": [
+        "tsf_solar",
+        "mars_upbringing"
+      ],
+      "Ganimed": [
+        "tsf_solar"
+      ],
+      "Europe": [
+        "tsf_solar"
+      ],
+      "Titan": [
+        "tsf_solar",
+        "titan_upbringing"
+      ],
+      "Pluto": [
+        "tsf_solar"
+      ],
+      "Boron": [
+        "tsf_altair"
+      ],
+      "BabylonIII": [
+        "tsf_solar",
+        "babylon_iii_upbringing"
+      ],
+      "NewCanaan": [
+        "tsf_solar",
+        "new_canaan_upbringing"
+      ],
+      "Juno": [
+        "tsf_solar",
+        "juno_upbringing"
+      ],
+      "Langobardia": [
+        "tsf_solar",
+        "langobardia_upbringing"
+      ],
+      "AlKhazraj": [
+        "tsf_solar",
+        "al_khazraj_upbringing"
+      ],
+      "Lavra": [
+        "tsf_altair",
+        "lavra_upbringing"
+      ],
+      "Magnitka": [
+        "kssp",
+        "magnitka_upbringing"
+      ],
+      "Despoina": [
+        "kssp",
+        "despoina_upbringing"
+      ],
+      "Viyara": [
+        "kssp",
+        "viyara_upbringing"
+      ],
+      "Tellurus": [
+        "elysian",
+        "tellurus_upbringing"
+      ],
+      "Asteria": [
+        "elysian",
+        "asteria_upbringing"
+      ],
+      "Adomai": [
+        "free_north",
+        "adomai_upbringing"
+      ],
+      "Iluk": [
+        "free_north"
+      ],
+      "Aurum": [
+        "free_north",
+        "aurum_upbringing"
+      ],
+      "Altam": [
+        "free_north",
+        "altam_upbringing"
+      ],
+      "Limneya": [
+        "free_transit",
+        "limneya_upbringing"
+      ],
+      "Inka": [
+        "free_transit",
+        "inka_upbringing"
+      ],
+      "Kolfman": [
+        "free_transit",
+        "kolfman_upbringing"
+      ],
+      "GroundFerrum": [
+        "free_transit",
+        "ground_ferrum_upbringing"
+      ],
+      "NewHarmony": [
+        "free_south",
+        "new_harmony_upbringing"
+      ],
+      "Avalon": [
+        "free_south",
+        "avalon_upbringing"
+      ],
+      "Nimue": [
+        "free_south"
+      ],
+      "NewBrazil": [
+        "free_north",
+        "new_brazil_upbringing"
+      ],
+      "Hirkha": [
+        "free_south"
+      ],
+      "Ksarksis": [
+        "free_transit"
+      ],
+      "Avafeus": [
+        "free_transit"
+      ],
+      "Ayrone": [
+        "free_transit"
+      ],
+      "Moges": [
+        "moges_upbringing"
+      ],
+      "Urlum": [
+        "urlum_upbringing"
+      ],
+      "MaunaB": [
+        "mauna_b_upbringing"
+      ],
+      "KverrBalakk": [
+        "skrell_imperial"
+      ],
+      "Zuviyen": [
+        "zuviyen_upbringing",
+        "nian_zuviyen",
+        "nian_mixed"
+      ],
+      "plasmaman_ledon": [
+        "plasmaman_technocrat"
+      ],
+      "plasmaman_rod": [
+        "plasmaman_technocrat"
+      ],
+      "plasmaman_zeitag": [
+        "plasmaman_technocrat"
+      ],
+      "plasmaman_kont": [
+        "plasmaman_technocrat"
+      ],
+      "plasmaman_hen": [
+        "plasmaman_technocrat"
+      ],
+      "nian_caravan": [
+        "nian_caravan",
+        "nian_mixed"
+      ],
+      "sprout": [
+        "ethereal_sprout",
+        "ethereal_human_influenced"
+      ],
+      "spring": [
+        "ethereal_sprout",
+        "ethereal_human_influenced"
+      ]
+    },
+    "faction_cultures": {
+      "Seekers": [
+        "free_north",
+        "altam_upbringing",
+        "new_brazil_upbringing"
+      ],
+      "FreeCartel": [
+        "free_transit",
+        "limneya_upbringing",
+        "inka_upbringing",
+        "ground_ferrum_upbringing",
+        "kolfman_upbringing"
+      ],
+      "OrdoLex": [
+        "free_south",
+        "new_harmony_upbringing",
+        "avalon_upbringing"
+      ],
+      "Adomai": [
+        "free_north",
+        "adomai_upbringing"
+      ],
+      "KidanRepublic": [
+        "free_north",
+        "aurum_upbringing"
+      ]
+    }
+  },
+  "worlds": {
+    "Venus": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу.",
+      "allowed_species": [
+        "human"
+      ]
+    },
+    "Earth": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу.",
+      "allowed_species": [
+        "human"
+      ]
+    },
+    "Moon": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу.",
+      "allowed_species": [
+        "human"
+      ]
+    },
+    "Mars": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу.",
+      "allowed_species": [
+        "human"
+      ]
+    },
+    "Ganimed": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу.",
+      "allowed_species": [
+        "human"
+      ]
+    },
+    "Europe": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу.",
+      "allowed_species": [
+        "human"
+      ]
+    },
+    "Titan": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу.",
+      "allowed_species": [
+        "human"
+      ]
+    },
+    "Pluto": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу.",
+      "allowed_species": [
+        "human"
+      ]
+    },
+    "Boron": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "BoronII": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Разрушающийся спутник; описаны только неудачные экспедиции, не постоянная колония.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Raine": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "BabylonIII": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Arkadia": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "NewCanaan": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Juno": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Athena": {
+      "selectable": false,
+      "kind": "gas_giant",
+      "reason": "Газовый гигант: исключён независимо от орбитальных станций и добывающих платформ.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Langobardia": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Citra": {
+      "selectable": true,
+      "kind": "settlement",
+      "reason": "Действующие промышленные комплексы добычи льда и металлов на твёрдом спутнике; отсутствие численности не доказывает отсутствие жителей.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Gatewood": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "AlKhazraj": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Amigdala": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Ninhursag": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Ninurta": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Vorat": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Колония и станции уничтожены в 2532 году; проекты восстановления провалились.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Lavra": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Zuviyen": {
+      "selectable": true,
+      "kind": "settlement",
+      "reason": "Автор 2026-10-26 подтвердил постоянные поселения на самой планете; уточнение канона имеет приоритет над прежней пометкой карты.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ],
+      "habitat_context": "surface",
+      "source": "author_decision",
+      "decision_id": "zuviyen-permanent-settlements-20261026"
+    },
+    "Urlum": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "MouunLum": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "RouunLum": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Заброшенные руины; восстановление оборонного узла только рассматривается.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "MaunaB": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Pioneer": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Безжизненный бывший испытательный полигон без постоянной колонии.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "PioneerII": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Lasarys": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Udarnyik": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Magnitka": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Despoina": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Viyara": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "ViyaraII": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Добыча и грузовые операции полностью автоматизированы.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Avangard17": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Polus": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Tellurus": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу.",
+      "allowed_species": [
+        "human"
+      ]
+    },
+    "Asteria": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу.",
+      "allowed_species": [
+        "human"
+      ]
+    },
+    "Paradise": {
+      "selectable": true,
+      "kind": "settlement",
+      "reason": "Действующий искусственный орбитальный населённый объект, а не газовый гигант.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Morgana": {
+      "selectable": false,
+      "kind": "gas_giant",
+      "reason": "Газовый гигант: исключён независимо от орбитальных станций и добывающих платформ.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Morgana5": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "LasisArdaks": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Автор 2026-10-26 подтвердил отсутствие постоянных жителей: есть только рабочие аванпосты и шахты. Исходный лорный текст сохраняется.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts",
+        "https://docs.google.com/document/d/1501jy_u_OdE3sbNr3HkYhDi31HVn9qKNHv96TDfxKoI/edit"
+      ],
+      "source": "author_decision",
+      "decision_id": "lasis-ardaks-no-permanent-residents-20261026"
+    },
+    "Agir": {
+      "selectable": true,
+      "kind": "settlement",
+      "reason": "Несколько крупных действующих горнодобывающих аванпостов и полноценная научная станция; ИОН Айс Бокс на поверхности.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts",
+        "https://docs.google.com/document/d/1501jy_u_OdE3sbNr3HkYhDi31HVn9qKNHv96TDfxKoI/edit"
+      ]
+    },
+    "Prometheus": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "После уничтожения колония никогда не заселялась повторно.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Pandora": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Уничтожена с коллапсом трети планеты.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Moges": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Sirsh": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Lirash": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Khiram": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Необитаемый безатмосферный мир без поселений и освоения.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Adomai": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Iluk": {
+      "selectable": true,
+      "kind": "settlement",
+      "reason": "На поверхности прямо описаны шахтёрские поселения под защитными куполами.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Ramaja": {
+      "selectable": false,
+      "kind": "gas_giant",
+      "reason": "Газовый гигант: исключён независимо от орбитальных станций и добывающих платформ.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Ksarksis": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Aurum": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Ree": {
+      "selectable": false,
+      "kind": "gas_giant",
+      "reason": "Газовый гигант: исключён независимо от орбитальных станций и добывающих платформ.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "DeltaMazz": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Безжизненный токсичный и радиоактивный мир; приближение смертельно опасно.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Altam": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Limneya": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Hirkha": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Inka": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Nemeina": {
+      "selectable": false,
+      "kind": "gas_giant",
+      "reason": "Газовый гигант: исключён независимо от орбитальных станций и добывающих платформ.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "GroundFerrum": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "NewHarmony": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Miriam": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Расплавленный мир; пребывание органических форм невозможно, добыча автономными роботами.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Kolfman": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Gregor": {
+      "selectable": false,
+      "kind": "gas_giant",
+      "reason": "Газовый гигант: исключён независимо от орбитальных станций и добывающих платформ.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Anselm": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Необитаемая карликовая планета; только потенциальный научный интерес, без колонии.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Avafeus": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Ayrone": {
+      "selectable": true,
+      "kind": "settlement",
+      "reason": "Около 1500 жителей и несколько тысяч учёных на орбитальных станциях твёрдого мира; поверхность не объявляется пригодной.",
+      "habitat_context": "orbital",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Violet": {
+      "selectable": false,
+      "kind": "gas_giant",
+      "reason": "Газовый гигант: исключён независимо от орбитальных станций и добывающих платформ.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "Zaratus": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "Опасный нестабильный мир с примитивными микроорганизмами; постоянное поселение не описано.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/stars.ts"
+      ]
+    },
+    "MinKin": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Avalon": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Nimue": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "NewBrazil": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "Idyllia": {
+      "selectable": false,
+      "kind": "uninhabited",
+      "reason": "После уничтожения планетарного ИИ промышленный мир стал мёртвой грудой металлолома; возрождение не описано.",
+      "source_refs": [
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit"
+      ]
+    },
+    "KverrBalakk": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Населённый мир или обычное место проживания по исходному каталогу."
+    },
+    "other": {
+      "selectable": true,
+      "kind": "settlement",
+      "reason": "Свободное уточнение места без объявления новой канонической планеты."
+    },
+    "plasmaman_ledon": {
+      "selectable": true,
+      "kind": "fleet",
+      "reason": "Действующее корабельное общество с постоянными экипажами и инфраструктурой; мобильное место проживания.",
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Плазмамен&oldid=78688#Общество"
+      ]
+    },
+    "plasmaman_rod": {
+      "selectable": true,
+      "kind": "fleet",
+      "reason": "Действующее корабельное общество с постоянными экипажами и инфраструктурой; мобильное место проживания.",
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Плазмамен&oldid=78688#Общество"
+      ]
+    },
+    "plasmaman_zeitag": {
+      "selectable": true,
+      "kind": "fleet",
+      "reason": "Действующее корабельное общество с постоянными экипажами и инфраструктурой; мобильное место проживания.",
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Плазмамен&oldid=78688#Общество"
+      ]
+    },
+    "plasmaman_kont": {
+      "selectable": true,
+      "kind": "fleet",
+      "reason": "Действующее корабельное общество с постоянными экипажами и инфраструктурой; мобильное место проживания.",
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Плазмамен&oldid=78688#Общество"
+      ]
+    },
+    "plasmaman_hen": {
+      "selectable": true,
+      "kind": "fleet",
+      "reason": "Действующее корабельное общество с постоянными экипажами и инфраструктурой; мобильное место проживания.",
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Плазмамен&oldid=78688#Общество"
+      ]
+    },
+    "nian_caravan": {
+      "selectable": true,
+      "kind": "fleet",
+      "reason": "Действующее корабельное общество с постоянными экипажами и инфраструктурой; мобильное место проживания.",
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Ниан&oldid=78416#Краткое_описание_Каравана"
+      ]
+    },
+    "sprout": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Постоянное место проживания по утверждённой видовой статье wiki.",
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Эфериал&oldid=75007#История",
+        "https://bs.ss220.club/index.php?title=Эфериал&oldid=75007#Туризм"
+      ]
+    },
+    "spring": {
+      "selectable": true,
+      "kind": "solid",
+      "reason": "Постоянное место проживания по утверждённой видовой статье wiki.",
+      "source_refs": [
+        "https://bs.ss220.club/index.php?title=Эфериал&oldid=75007#История"
+      ]
+    }
+  },
+  "cultures": {
+    "tsf_solar": {
+      "allowed_species": [
+        "human"
+      ],
+      "reason": "Утверждённое человеческое общество Солнечной системы или Элизиума; human не включает felinid и cerulean.",
+      "source_refs": [
+        "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit"
+      ]
+    },
+    "earth_upbringing": {
+      "allowed_species": [
+        "human"
+      ],
+      "reason": "Утверждённое человеческое общество Солнечной системы или Элизиума; human не включает felinid и cerulean.",
+      "source_refs": [
+        "https://spacestation220.github.io/SS220-Political-Map/",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit"
+      ]
+    },
+    "moon_upbringing": {
+      "allowed_species": [
+        "human"
+      ],
+      "reason": "Утверждённое человеческое общество Солнечной системы или Элизиума; human не включает felinid и cerulean.",
+      "source_refs": [
+        "https://spacestation220.github.io/SS220-Political-Map/",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit"
+      ]
+    },
+    "mars_upbringing": {
+      "allowed_species": [
+        "human"
+      ],
+      "reason": "Утверждённое человеческое общество Солнечной системы или Элизиума; human не включает felinid и cerulean.",
+      "source_refs": [
+        "https://spacestation220.github.io/SS220-Political-Map/",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit"
+      ]
+    },
+    "titan_upbringing": {
+      "allowed_species": [
+        "human"
+      ],
+      "reason": "Утверждённое человеческое общество Солнечной системы или Элизиума; human не включает felinid и cerulean.",
+      "source_refs": [
+        "https://spacestation220.github.io/SS220-Political-Map/",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit"
+      ]
+    },
+    "elysian": {
+      "allowed_species": [
+        "human"
+      ],
+      "reason": "Утверждённое человеческое общество Солнечной системы или Элизиума; human не включает felinid и cerulean.",
+      "source_refs": [
+        "https://docs.google.com/document/d/1G6Pbt6bBRlFh0gdaBd42-mXLys5uAUGQ4C3hTVXeq3g/edit"
+      ]
+    },
+    "tellurus_upbringing": {
+      "allowed_species": [
+        "human"
+      ],
+      "reason": "Утверждённое человеческое общество Солнечной системы или Элизиума; human не включает felinid и cerulean.",
+      "source_refs": [
+        "https://spacestation220.github.io/SS220-Political-Map/",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts"
+      ]
+    },
+    "asteria_upbringing": {
+      "allowed_species": [
+        "human"
+      ],
+      "reason": "Утверждённое человеческое общество Солнечной системы или Элизиума; human не включает felinid и cerulean.",
+      "source_refs": [
+        "https://spacestation220.github.io/SS220-Political-Map/",
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts"
+      ]
+    }
+  },
+  "antagonist_hierarchy": {
+    "catalog": "antagonist.json",
+    "parents": {
+      "Gorlex": "Cybersun"
+    },
+    "independent": [
+      "SnakeStrike",
+      "MI13",
+      "SELF",
+      "Interdyne",
+      "Donk",
+      "Waffle",
+      "Tiger"
+    ],
+    "source_refs": [
+      "https://docs.google.com/document/d/19mrbp932YtIzZVEPi-R0Y4DqsO9JFeEBz7TMo4rqOBs/edit"
+    ],
+    "note": "Публичное трудоустройство Cybersun/Interdyne/Donk не означает тайного членства в Синдикате. SnakeStrike отделилась от Gorlex; MI13 не имеет подтверждённого родителя TSF."
+  },
+  "unresolved": [
+    {
+      "id": "tsf-imperial-residence",
+      "question": "Какие конкретные виды входят в выражение имперские расы для официального ВНЖ ТСФ, и какие дополнительные миры/исключения действуют вне Солнечной системы?",
+      "behavior": "Сохранять human-only Солнечной системы; не запрещать всех прочих ксенорас во всей Федерации.",
+      "source_refs": [
+        "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit"
+      ]
+    },
+    {
+      "id": "imperium-residence-laws",
+      "question": "Какие конкретные нескрелльские виды и населённые миры затрагивают ограничения постоянного проживания в Империуме?",
+      "behavior": "Не выводить из неприветствия универсальный запрет; ограничивать только прямо подтверждённые территории.",
+      "source_refs": [
+        "https://docs.google.com/document/d/1P7V3f8wYtwZG-bTS3BoCAukU_MAoudYZQ6HYnr6d9Oo/edit?tab=t.cml83k5yovgc"
+      ]
+    },
+    {
+      "id": "closed-cultural-upbringing",
+      "question": "Какие конкретные культурные программы действительно закрыты для воспитанников другого вида, включая усыновление, смешанные семьи и диаспоры?",
+      "behavior": "Кроме подтверждённых human-only не подменять культуру генетическим видом или нынешней фракцией.",
+      "source_refs": [
+        "https://docs.google.com/document/d/1ZEsV19LR78-3XGe6N9vgqsUQ7fkLy_nnVUKHd5bgxOE/edit",
+        "https://docs.google.com/document/d/1P7V3f8wYtwZG-bTS3BoCAukU_MAoudYZQ6HYnr6d9Oo/edit?tab=t.cml83k5yovgc"
+      ]
+    },
+    {
+      "id": "corporate-membership-versus-contract",
+      "question": "Требуется ли в анкете отдельно различать гражданство NanoTrasen и контрактное трудоустройство для ограничений вступления граждан КССП в корпоративную семью?",
+      "behavior": "Текущий контекст NanoTrasen не считать доказательством полного гражданства; не запрещать советскую культуру по месту работы.",
+      "source_refs": [
+        "https://docs.google.com/document/d/1501jy_u_OdE3sbNr3HkYhDi31HVn9qKNHv96TDfxKoI/edit"
+      ]
+    },
+    {
+      "id": "kpb-identity",
+      "question": "Какое корпоративное образование обозначено КПБ в задании? В действующем каталоге фракций оно не определено.",
+      "behavior": "Не создавать вымышленную организацию и дочерние подразделения.",
+      "source_refs": []
+    },
+    {
+      "id": "social-incomplete-names",
+      "question": "Каковы дополнительные подтверждённые названия вульпканинских кланов и таяранских домов за пределами опубликованных перечней? Перечень унатхов из утверждённой статьи вики уже включён в social.json.",
+      "behavior": "Использовать найденные структуры без выдуманных названий и без ограничений профессий; отсутствие старого значения допустимо.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts",
+        "https://docs.google.com/document/d/1mHovwJsPLOcApJt3D38m8-cKLjvU9ylwgoOEJO6jhTc/edit",
+        "https://docs.google.com/document/d/1Yp6SsxMpc8sGhr6ztFQgbtQNwbHvRQY-zxxjiblr4zM/edit"
+      ]
+    },
+    {
+      "id": "gas-giant-orbital-relocation",
+      "question": "С какими конкретными обитаемыми мирами бытово и административно связаны станции исключённых газовых гигантов?",
+      "behavior": "Не назначать произвольную соседнюю планету; старое значение и свободный текст сохранить для осмысленного исправления.",
+      "source_refs": [
+        "https://github.com/SpaceStation220/SS220-Political-Map/blob/d6eebf606c4145b4e263e7f56093f811fcb2c684/src/common/planets.ts"
+      ]
+    }
+  ],
+  "author_decisions": [
+    {
+      "id": "zuviyen-permanent-settlements-20261026",
+      "source": "author_decision",
+      "date": "2026-10-26",
+      "world": "Zuviyen",
+      "statement": "Зувийен сохранить: на самой планете есть постоянные поселения.",
+      "effect": "selectable=true; kind=settlement; habitat_context=surface"
+    },
+    {
+      "id": "lasis-ardaks-no-permanent-residents-20261026",
+      "source": "author_decision",
+      "date": "2026-10-26",
+      "world": "LasisArdaks",
+      "statement": "Лазис Ардакс исключить: постоянных жителей нет, только рабочие аванпосты и шахты. Текст лора не удалять.",
+      "effect": "selectable=false; kind=uninhabited; preserve source lore"
+    }
+  ]
+}

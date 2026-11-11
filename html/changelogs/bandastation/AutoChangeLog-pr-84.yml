@@ -1,0 +1,4 @@
+author: "mo0niverse"
+delete-after: True
+changes:
+  - bugfix: "Исправлена рвота у КПБ при ношении жвачки и леденцов в слоте маски."
