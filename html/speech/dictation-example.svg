@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="160" viewBox="0 0 480 160" role="img" aria-label="Схема пятистрочного поля диктовки с ограничением 30 секунд">
+<rect x="1" y="1" width="478" height="158" fill="#101820" stroke="#688baa" stroke-width="2"/>
+<rect x="7" y="7" width="53" height="24" rx="2" fill="#182630" stroke="#688baa"/>
+<g fill="#c5d9ed" font-family="monospace" font-size="14"><text x="11" y="24">Говор</text><text x="69" y="25">Проверка связи, капитан прибыл на станцию.</text></g>
+<g stroke="#21313f"><path d="M69 35H472M69 55H472M69 75H472M69 95H472M69 115H472"/></g>
+<g fill="#c4ccd6" font-family="sans-serif" font-size="12"><text x="9" y="136">Shift+T — отправить · Escape — отменить.</text><text x="9" y="152">Запись до 30 секунд. По лимиту — отмена без отправки.</text></g></svg>
