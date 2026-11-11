@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-slim
     steps:
       - id: create_token
-        uses: actions/create-github-app-token@v3.3.0
+        uses: actions/create-github-app-token@v3
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
