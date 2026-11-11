@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../"><link rel="stylesheet" href="dmdoc.css"><title>modular_bandastation/species/IPC_VALIDATION.md - BandaStation</title></head><body><header><a href="index.html">BandaStation</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>Проверка отдельного IPC PR <aside>modular_bandastation/species/IPC_VALIDATION.md</aside> <a href="https://github.com/TheSameEli/Primera/blob/ebd85cfd06172697b0f1e800b2600d6a81090144/modular_bandastation/species/IPC_VALIDATION.md"><img src="git.png" width="16" height="16" title="modular_bandastation/species/IPC_VALIDATION.md"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>Проверка выполнена 25.10.2026 в отдельном checkout ветки <code>ipc-paradise-upstream</code>,
+без подключения модуля Vox. Финальный полный runner выполнен на коммите
+<code>3fb45fcb15e29cd956b5b624b48523040b63e281</code>, после обновления трёх доказанно
+устаревших эталонов и окончательной раскладки IPC defines/includes.
+Общая runtime-основа включена обычным merge <code>species-runtime-shared</code>, HEAD
+<code>2568eea248c2bc626c46248a5da83c8c2c86d85d</code>.</p>
+<h2 id="результаты">Результаты</h2><table><thead><tr><th>Проверка</th><th>Результат</th></tr></thead><tbody>
+<tr><td>Штатная сборка <code>bun tools/build/build.ts build</code>, без <code>UNIT_TESTS</code></td><td>PASS: BYOND 516.1685, 0 ошибок, 0 предупреждений; TGUI/Rspack собран</td></tr>
+<tr><td><code>test-ipc.ps1 -IncludeHumanoidScreenshots -TimeoutSeconds 600</code></td><td><strong>Полный driver exit 0</strong>; все 77 IPC и 11 общих <code>Run()</code> прошли: <strong>88/88</strong>; отсутствующих результатов нет</td></tr>
+<tr><td>Нативное завершение DD</td><td>Код 0, <code>clean_run.lk = Success!</code></td></tr>
+<tr><td>Сырые runtime-логи</td><td>Все три файла существуют; совпадений ошибок в <code>dd.log</code>, <code>runtime.log.json</code>, <code>console.log</code> — 0</td></tr>
+<tr><td>Сравнение изображений внутри полного runner</td><td><strong>45/45</strong>, код comparator 0: три IPC и 42 humanoid изображения</td></tr>
+<tr><td>Регрессия provenance конвертера</td><td><code>python tools/ipc/test_convert_assets.py -v</code>: 2/2; подставленные staged, unstaged и untracked статусы Git отклоняются до записи результатов</td></tr>
+<tr><td>Контракт IPC runner</td><td>10/10: здоровый набор допускается, native crash, потеря теста/лога/скриншота, runtime, assertion и нештатное завершение отклоняются</td></tr>
+<tr><td>Обычный сервер: запуск, выключение и перезагрузка</td><td><strong>4/4 PASS</strong>, driver и все четыре DD exit 0; компиляция 0 ошибок, 0 предупреждений</td></tr>
+<tr><td>TypeScript</td><td>PASS, exit 0; <code>tgui-tsc</code> 20,6 секунды</td></tr>
+<tr><td>Тесты TGUI</td><td><strong>25/25 PASS</strong>, 40 assertions, exit 0</td></tr>
+<tr><td>Dreamchecker после окончательной раскладки</td><td>PASS, exit 0, <strong>0 diagnostics</strong></td></tr>
+</tbody></table>
+<p>В wrapper выбраны 90 типов. Два <code>focus_only</code> — <code>invalid_research_designs</code> и
+<code>invalid_emissives</code> — регистрируют ошибки из других процедур и не создают отдельный
+успешный <code>Run</code>. Поэтому ожидаются именно 88 результатов, включая все 77 IPC-тестов.
+Тестовая компиляция имеет 0 ошибок и четыре предупреждения инфраструктуры
+<code>UNIT_TESTS</code>: tracking qdel, отключённые loop checks и две неиспользуемые переменные
+тестовой карты. Обычная игровая сборка предупреждений не имеет.</p>
+<h2 id="исправления-и-границы-проверки">Исправления и границы проверки</h2>
+<p>Кулинарное улучшение теперь действительно расходует содержимое ложки через
+существующий <code>consume_flavor()</code>. Вилка даёт вкус уже снятой с омлета порции.
+Два новых теста проходят настоящие fork/spoon/ladle, самостоятельную еду и кормление,
+полную и последнюю частичную порции, удаление и отказ процессора во время <code>do_after</code>.
+Проверены отсутствие реагентов в теле и процессоре, седации и пополнения заряда.
+Органический путь и запрет еды без исправного улучшения сохраняются.</p>
+<p>Первый runner завершился кодом 1 на двух старых humanoid эталонах; его журналы и
+старые PNG сохранены. Три lizard PNG совпали побайтово с независимым Linux CI artifact
+<code>12580401262</code> и native контролем (97/5/5 изменённых RGBA-пикселей).
+После обновления только этих трёх эталонов выполнен новый <strong>полный</strong> runner:
+88/88 тестов, 45/45 изображений и итоговый код 0 без ручных промежуточных шагов.</p>
+<table><thead><tr><th>Эталон</th><th>SHA256 фактического PNG и Linux CI</th></tr></thead><tbody>
+<tr><td><code>screenshot_humanoids__datum_species_lizard.png</code></td><td><code>27409b0719874c86ced316fca85036153b2f495c0371f8d3e3d83cc6f508160a</code></td></tr>
+<tr><td><code>screenshot_humanoids__datum_species_lizard_ashwalker.png</code></td><td><code>c64548a599cbce1b955fc39f9c627f987ac9355465a7a5ce3344eeafa68fb9bc</code></td></tr>
+<tr><td><code>screenshot_humanoids__datum_species_lizard_silverscale.png</code></td><td><code>74b61630691e10977e1c603718c46ced2c80d6967f08ea3713180ffc8bafb73f</code></td></tr>
+</tbody></table>
+<p>Использована установленная <code>rust_g.dll</code> 7.0.0 с SHA256
+<code>8461311659929524301299d7a6a754e5ffe51c6d326ce7f2a8850143c5ee24db</code>.
+Происхождение DLL, ABI и проверки её lifetime описаны отдельно в
+<a href="../../tools/rustg/VALIDATION.md">tools/rustg/VALIDATION.md</a>.
+Разбор подтверждённых и отклонённых замечаний находится в
+<a href="../../tools/ipc/REVIEW_AUDIT.md">tools/ipc/REVIEW_AUDIT.md</a>.</p>
+<p>Обычный сервер проверен с <code>UNIT_TESTS</code> выключенным, на отдельной минимальной карте
+и свежих изолированных data/config, без БД и публикации в Hub. Две ветки штатного
+выключения и две ветки <code>world.Reboot()</code> проверены с <code>-close</code> и без него: восемь полных
+инициализаций, четыре настоящих перезагрузки в прежнем PID. Все 147 подсистем, включая
+test probe, инициализировались; cyber regression 8/8 и missing-area regression 24/24.
+Сырых runtimes, Windows faults, ошибок event query, неопознанных или посторонних PID
+событий, timeout и принудительных завершений нет.</p>
+<p>Локальные артефакты финального runner: <code>tmp/ipc-test-46b82783aaac/</code> — <code>compile.log</code>,
+<code>data/unit_tests.json</code>, три runtime-лога, PNG и <code>validation-summary.json</code>;
+вывод команды — <code>tmp/ipc-native-final-replay.log</code>.
+История исходного несовпадения и <code>baselines-before/</code>, <code>baseline-refresh-evidence.json</code>
+сохранены в <code>tmp/ipc-test-07e74474ee3b/</code>, исходный вывод — в <code>tmp/ipc-native-final.log</code>.
+Обычный сервер: <code>tmp/server-lifecycle-4536acc49911/manifest.json</code>,
+<code>tmp/ipc-lifecycle-final.log</code>. Сборка: <code>tmp/ipc-build-final.log</code>,
+<code>tmp/ipc-build-shared-final.log</code>. Проверки интерфейса: <code>tmp/split-tgui-tsc.log</code>,
+<code>tmp/split-tgui-tests.log</code>; анализ DM: <code>tmp/split-dreamchecker.log</code>.
+Эти локальные журналы не включены в Git; повторный запуск создаёт собственный каталог.</p>
+<p>Подключение настоящего клиента, интерактивные окна настроек, переподключение и
+раунд с игроками этим прогоном не проверялись. Сценарии ручной проверки перечислены
+в <a href="IPC_PORT.md#%D0%BF%D1%80%D0%BE%D0%B2%D0%B5%D1%80%D0%BA%D0%B0-%D1%81-%D0%B8%D0%B3%D1%80%D0%BE%D0%BA%D0%BE%D0%BC">IPC_PORT.md</a>.</p></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/TheSameEli/Primera/tree/ebd85cfd06172697b0f1e800b2600d6a81090144">ebd85cf</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.11.0</a></footer></body></html>

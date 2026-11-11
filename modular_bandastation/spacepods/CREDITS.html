@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../"><link rel="stylesheet" href="dmdoc.css"><title>modular_bandastation/spacepods/CREDITS.md - BandaStation</title></head><body><header><a href="index.html">BandaStation</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>Источники подов и челнок-инженера <aside>modular_bandastation/spacepods/CREDITS.md</aside> <a href="https://github.com/TheSameEli/Primera/blob/ebd85cfd06172697b0f1e800b2600d6a81090144/modular_bandastation/spacepods/CREDITS.md"><img src="git.png" width="16" height="16" title="modular_bandastation/spacepods/CREDITS.md"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>Основа порта — <a href="https://github.com/ss220-space/Paradise/tree/38015e8f1ad32d0812874a7b06090d7d09a5888c">ss220-space/Paradise</a>,
+коммит <code>38015e8f1ad32d0812874a7b06090d7d09a5888c</code>.
+Авторы исходного кода и ресурсов — участники Goonstation, ParadiseSS13/Paradise и
+ss220-space/Paradise. Индивидуальные вклады доступны в истории исходных файлов;
+ссылки на зафиксированные версии приведены в <a href="ASSETS.json">ASSETS.json</a>.</p>
+<p>Код подов, их оборудования, деталей и сборки, роль из <code>code/game/jobs/job/science.dm</code>,
+исследования из <code>code/modules/research/designs/spacepod_designs.dm</code> и консоль из
+<code>code/game/machinery/computer/pod_tracking_console.dm</code> перенесены с адаптацией под
+native API tg/BandaStation: транспорт, атмосфера, взаимодействия, действия,
+исследования, профессии и переводы. Лицензия исходного кода — <strong>AGPL-3.0</strong>;
+полный исходный текст сохранён в <a href="LICENSE-CODE.txt">LICENSE-CODE.txt</a>.</p>
+<p>Непрерывная физика полёта в <code>code/spacepod_flight.dm</code> адаптирована из
+<a href="https://github.com/MrRomainzZ/Paradise-SS220-R/tree/e83c7f88dddbc5f5c7988b3601cb39265198342f">ветки spacepods MrRomainzZ/Paradise-SS220-R</a>,
+коммит <code>e83c7f88dddbc5f5c7988b3601cb39265198342f</code>, файлы
+<code>code/modules/spacepods/spacepod_physics.dm</code> и <code>spacepods.dm</code>.
+Исходная реализация — Yogstation; адаптация для Paradise и разделение файлов —
+MrRomainzZ. На код распространяется AGPL-3.0 согласно README исходного репозитория.
+Ресурсы из этой ветки не копировались.</p>
+<p>Графика скопирована побайтово. Исходные лицензии сохранены согласно
+<a href="https://github.com/ss220-space/Paradise/blob/38015e8f1ad32d0812874a7b06090d7d09a5888c/README.md#license">README донора</a>.</p>
+<table><thead><tr><th>Файл модуля</th><th>Исходный путь в Paradise</th><th>Лицензия</th></tr></thead><tbody>
+<tr><td><code>icons/locator.dmi</code></td><td><code>icons/spacepods_paradise/locator.dmi</code></td><td>CC-BY-SA-3.0</td></tr>
+<tr><td><code>icons/spacepod.dmi</code></td><td><code>icons/obj/spacepod.dmi</code></td><td>CC-BY-SA-3.0</td></tr>
+<tr><td><code>icons/pods.dmi</code></td><td><code>icons/goonstation/48x48/pods.dmi</code></td><td>CC-BY-NC-SA-3.0</td></tr>
+<tr><td><code>icons/pod_construction.dmi</code></td><td><code>icons/goonstation/48x48/pod_construction.dmi</code></td><td>CC-BY-NC-SA-3.0</td></tr>
+<tr><td><code>icons/pod_parts.dmi</code></td><td><code>icons/goonstation/pods/pod_parts.dmi</code></td><td>CC-BY-NC-SA-3.0</td></tr>
+<tr><td><code>icons/ship.dmi</code></td><td><code>icons/goonstation/pods/ship.dmi</code></td><td>CC-BY-NC-SA-3.0</td></tr>
+</tbody></table>
+<p>Полные тексты лицензий ресурсов:
+<a href="LICENSE-ASSETS-CC-BY-SA-3.0.txt">CC-BY-SA-3.0</a> и
+<a href="LICENSE-ASSETS-CC-BY-NC-SA-3.0.txt">CC-BY-NC-SA-3.0</a>.
+Для четырёх ресурсов Goonstation сохраняется условие NonCommercial.</p>
+<p><a href="ASSETS.json">ASSETS.json</a> содержит исходные permalink, Git blob ID и SHA-256
+оригиналов и копий всех шести DMI. Совпадение хэшей подтверждает отсутствие
+изменений пикселей, состояний, кадров и метаданных анимации. Использованные звуки
+и остальные существующие ресурсы PrimeDream сохраняют свои исходные лицензии.</p>
+<p>Русские предупреждения <code>sound/alerts/*.ogg</code> синтезированы локально из оригинальных
+фраз. Голос, параметры обработки и тексты записаны в <a href="sound/alerts/README.md">sound/alerts/README.md</a>.</p>
+<p>SVG-схема и оформление <code>SpacepodStatus</code> созданы для этой адаптации. Растровый
+референс интерфейса используется как ориентир стиля и в ресурсы сборки не включён.</p>
+<p><code>docs/status-monitor.png</code> показывает настоящий компонент <code>SpacepodStatus</code> на
+демонстрационных данных. <code>docs/local-pods.png</code> — снимок локального стенда,
+предоставленный автором сборки; изображённые поды используют ресурсы из таблицы выше.</p></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/TheSameEli/Primera/tree/ebd85cfd06172697b0f1e800b2600d6a81090144">ebd85cf</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.11.0</a></footer></body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../../"><link rel="stylesheet" href="dmdoc.css"><title>modular_bandastation/sierra_background/docs/SOCIAL_COVERAGE.md - BandaStation</title></head><body><header><a href="index.html">BandaStation</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>Покрытие расовых социальных структур <aside>modular_bandastation/sierra_background/docs/SOCIAL_COVERAGE.md</aside> <a href="https://github.com/TheSameEli/Primera/blob/ebd85cfd06172697b0f1e800b2600d6a81090144/modular_bandastation/sierra_background/docs/SOCIAL_COVERAGE.md"><img src="git.png" width="16" height="16" title="modular_bandastation/sierra_background/docs/SOCIAL_COVERAGE.md"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>Аудит КР-01 от 28 октября 2026 года, Primera <code>3676661f168</code>.
+Проверены код видов, проектные Google Docs, политическая карта и разрешённые
+автором статьи вики. Новые имена кланов вульпканинов и вариант беженца
+согласованы с автором отдельно. Для унатхов автор дополнительно утвердил
+весь перечень и описания ревизии 72238 статьи вики. Перечень известных
+родовых объединений
+не объявляется исчерпывающим там, где источник не даёт полного списка.</p>
+<h2 id="какие-виды-считаются-играбельными">Какие виды считаются играбельными</h2>
+<p>Штатный <code>get_selectable_species()</code> использует <code>check_roundstart_eligible()</code>
+и серверный <code>ROUNDSTART_RACES</code>. В обычной конфигурации разрешены 12 видов:
+девять в <code>config/game_options.txt</code>, ещё вульпканин, таяран и вокс в
+<code>config/bandastation/bandastation_config.txt</code>. Эти файлы только прочитаны.
+Сервер может иметь другой список; тест смены вида дополнительно обходит
+весь <code>GLOB.species_list</code>, включая отключённые в обычной конфигурации типы.</p>
+<p>Число вариантов ниже означает число строк в видимом социальном выборе.
+Для необязательного клана/дома включено «Не указано»; у скреллов такой
+строки нет. У скрытого поля число вариантов — 0.</p>
+<table><thead><tr><th>Играбельный вид / ID</th><th>Структура</th><th>Варианты</th><th>Источник</th><th>Статус</th></tr></thead><tbody>
+<tr><td>Человек / <code>human</code></td><td>Подтверждённого общего расового деления нет</td><td>0</td><td><a href="../../../code/modules/mob/living/carbon/human/species_types/humans.dm">Код человека</a>, <a href="https://docs.google.com/document/d/1Yp6SsxMpc8sGhr6ztFQgbtQNwbHvRQY-zxxjiblr4zM/edit">проектный Codex</a></td><td>Блок скрыт; гражданство, работодатель и занятие не объявлены кастами</td></tr>
+<tr><td>Фелинид / <code>felinid</code></td><td>Подтверждённого деления нет</td><td>0</td><td><a href="https://bs.ss220.club/index.php/%D0%A4%D0%B5%D0%BB%D0%B8%D0%BD%D0%B8%D0%B4">Вики: фелинид</a></td><td>Блок скрыт; история создания не задаёт наследственные кланы</td></tr>
+<tr><td>Унатх / <code>lizard</code></td><td>Клан; внеклановый статус Узо</td><td>7: Сзаахи, Усшулу, Кхарси, Зессур, Шурси, Узо, «Не указано»</td><td><a href="https://bs.ss220.club/index.php?title=%D0%A3%D0%BD%D0%B0%D1%82%D1%85&amp;oldid=72238#%D0%98%D0%B5%D1%80%D0%B0%D1%80%D1%85%D0%B8%D1%8F_%D0%BA%D0%BB%D0%B0%D0%BD%D0%BE%D0%B2">BandaStation wiki, ревизия 72238, «Иерархия кланов»</a>, <a href="../data/social.json">каталог</a>, отдельное решение автора от 28 октября</td><td>Весь перечень и описания утверждены автором. Зессур сохраняет прежний ID и получает описание исследователей. Узо — конкретный внеклановый статус, «Не указано» — незаполненное поле</td></tr>
+<tr><td>Скрелл / <code>skrell</code></td><td>Каста</td><td>5</td><td><a href="https://docs.google.com/document/d/1P7V3f8wYtwZG-bTS3BoCAukU_MAoudYZQ6HYnr6d9Oo/edit?tab=t.cml83k5yovgc">Утверждённый документ скреллов</a>, <a href="../data/skrell.json">единые описания</a></td><td>Кверр-Кэтиш, Мэлиш-Кэтиш, Кэнин-Кэтиш, Талум-Кэтиш, Раскинта-Кэтиш; все пять доступны независимо от воспитания</td></tr>
+<tr><td>Плазмамен / <code>plasmaman</code></td><td>Отдельное наследственное деление не подтверждено</td><td>0</td><td><a href="https://bs.ss220.club/index.php/%D0%9F%D0%BB%D0%B0%D0%B7%D0%BC%D0%B0%D0%BC%D0%B5%D0%BD">Вики: плазмамен</a></td><td>Блок скрыт; технократы, теократы и флотилии описывают общество, веру или проживание и уже имеют соответствующие разделы</td></tr>
+<tr><td>Ниан / <code>moth</code></td><td>Исторические кланы, современные Домены</td><td>0</td><td><a href="https://bs.ss220.club/index.php/%D0%9D%D0%B8%D0%B0%D0%BD">Вики: ниан — политика и история</a></td><td>Названия родовых кланов и пяти Доменов не опубликованы в проверенном источнике; куратор — должность, вестник — занятие. Именованные варианты не выдуманы, блок скрыт</td></tr>
+<tr><td>Эфириал / <code>ethereal</code></td><td>Подтверждённого родового деления нет</td><td>0</td><td><a href="https://bs.ss220.club/index.php/%D0%AD%D1%84%D0%B8%D1%80%D0%B8%D0%B0%D0%BB">Вики: эфириал — культура и гиды</a></td><td>Поселения и профессии гидов/стражей не превращены в касты; блок скрыт</td></tr>
+<tr><td>КПБ / <code>ipc</code></td><td>Подтверждённого деления нет</td><td>0</td><td><a href="../../species/code/human/species_type/ipc.dm">Код и действующий лор КПБ</a></td><td>Производитель корпуса и профессия не являются кланом самостоятельной позитронной личности; блок скрыт</td></tr>
+<tr><td>Церулеанец / <code>cerulean</code></td><td>Особое деление не утверждено</td><td>0</td><td><a href="../../../code/modules/mob/living/carbon/human/species_types/cerulean.dm">Код вида</a>, решение автора от 25 октября: оставить общие варианты до отдельного обсуждения лора</td><td>Блок скрыт</td></tr>
+<tr><td>Вульпканин / <code>vulpkanin</code></td><td>Клан и община беженцев</td><td>5: Аштар, Рахт, Догмат Мзманулина, Беженец, «Не указано»</td><td><a href="../../species/code/human/species_type/vulpkanin.dm">Действующий код вульпканина</a>, <a href="https://bs.ss220.club/index.php/%D0%92%D1%83%D0%BB%D1%8C%D0%BF%D0%BA%D0%B0%D0%BD%D0%B8%D0%BD#%D0%A0%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D0%B0%D1%86%D0%B8%D0%B8_%D0%BF%D0%BE_%D0%BE%D1%82%D1%8B%D0%B3%D1%80%D1%8B%D1%88%D1%83_%D0%BA%D0%BB%D0%B0%D0%BD%D0%BE%D0%B2">вики: кланы</a>, отдельное решение автора от 28 октября</td><td>Добавлены Рахт, Догмат Мзманулина и Беженец. Имя «Рахт» подтверждено последующим уточнением автора; ID <code>vulp_rakh</code> сохранён для совместимости. Беженец обозначает общинную принадлежность без заявленного членства в клане</td></tr>
+<tr><td>Таяран / <code>tajaran</code></td><td>Дом</td><td>4: Кайтам, Хадии, Сэндай, «Не указано»</td><td><a href="../../species/code/human/species_type/tajaran.dm">Действующий код таярана</a>, <a href="https://docs.google.com/document/d/1Yp6SsxMpc8sGhr6ztFQgbtQNwbHvRQY-zxxjiblr4zM/edit">проектный Codex</a>, <a href="https://bs.ss220.club/index.php/%D0%A2%D0%B0%D1%8F%D1%80%D0%B0%D0%BD#%D0%92%D0%BD%D1%83%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D1%8F%D1%8F_%D0%BF%D0%BE%D0%BB%D0%B8%D1%82%D0%B8%D0%BA%D0%B0">вики: дома</a></td><td>Все три основных дома уже представлены; ветви Сэндай не выданы за отдельные дома</td></tr>
+<tr><td>Вокс / <code>vox</code></td><td>Стая; различаются формы вида</td><td>0</td><td><a href="../../species/code/human/species_type/vox.dm">Действующий код и лор воксов</a></td><td>Игровая форма — прималис. Ауралис и апекс не являются доступными социальными вариантами прималис; именованные Стаи/Ковчеги не перечислены. Профессии торговца и рейдера не касты; блок скрыт</td></tr>
+</tbody></table>
+<p>Ещё семь видов получают доступ через праздничные переопределения
+<code>check_roundstart_eligible()</code>. Они тоже включены в аудит и регрессию:</p>
+<table><thead><tr><th>Праздничный вид / ID</th><th>Структура</th><th>Варианты</th><th>Источник</th><th>Статус</th></tr></thead><tbody>
+<tr><td>Скелет / <code>skeleton</code></td><td>Не подтверждена</td><td>0</td><td><a href="../../../code/modules/mob/living/carbon/human/species_types/skeletons.dm">Код скелета</a></td><td>HALLOWEEN; блок скрыт</td></tr>
+<tr><td>Зомби / <code>zombie</code></td><td>Не подтверждена</td><td>0</td><td><a href="../../../code/modules/mob/living/carbon/human/species_types/zombies.dm">Код зомби</a></td><td>HALLOWEEN; блок скрыт</td></tr>
+<tr><td>Тенечеловек / <code>shadow</code></td><td>Не подтверждена</td><td>0</td><td><a href="../../../code/modules/mob/living/carbon/human/species_types/shadowpeople.dm">Код тенечеловека</a></td><td>HALLOWEEN; блок скрыт. Отдельный антагонистический подтип nightmare сам запрещает roundstart</td></tr>
+<tr><td>Дуллахан / <code>dullahan</code></td><td>Не подтверждена</td><td>0</td><td><a href="../../../code/modules/mob/living/carbon/human/species_types/dullahan.dm">Код дуллахана</a></td><td>HALLOWEEN; блок скрыт</td></tr>
+<tr><td>Вампир / <code>vampire</code></td><td>Два безымянных клана</td><td>0</td><td><a href="../../../code/modules/mob/living/carbon/human/species_types/vampire.dm">Нативный лор вампира</a></td><td>HALLOWEEN; источник различает принятие/отрицание жажды, но не даёт названий кланов. Именованные варианты не выдуманы, блок скрыт</td></tr>
+<tr><td>Дух / <code>spirit</code></td><td>Не подтверждена</td><td>0</td><td><a href="../../../code/modules/mob/living/carbon/human/species_types/ghost.dm">Код духа</a></td><td>HALLOWEEN при <code>halloween_exclusive</code>; блок скрыт</td></tr>
+<tr><td>Обезьяна / <code>monkey</code></td><td>Не подтверждена</td><td>0</td><td><a href="../../../code/modules/mob/living/carbon/human/species_types/monkeys.dm">Код обезьяны</a></td><td>MONKEYDAY; блок скрыт</td></tr>
+</tbody></table>
+<p>Драски, серые и киданы встречаются в галактическом лоре, но не реализованы
+как виды, доступные этому билду при создании персонажа. Их упоминания в
+каталогах миров или государств не доказывают наличие играбельного вида.
+Отдельное обязательное поле для них не создаётся.</p>
+<h2 id="причины-и-исправления">Причины и исправления</h2>
+<p>До исправления <code>social.json</code> содержал для вульпканинов только Аштар:
+два других названных клана и одобренная автором община беженцев отсутствовали
+в самом справочнике. Добавлены три записи с видовыми ограничениями и
+источниками; существующие ID и описания не переименованы.</p>
+<p>У унатхов прежний справочник содержал только Зессур, а его описанием
+ошибочно служил абзац о спутнике Щит. По отдельно утверждённой статье вики
+добавлены Сзаахи, Усшулу, Кхарси, Шурси и статус Узо; описание Зессура
+заменено текстом о клане исследователей с сохранением ID <code>unathi_zessur</code>.
+Вместе с «Не указано» доступны семь вариантов. Условия вступления и
+гендерные традиции изложены как лор, без новых игровых ограничений.</p>
+<p>Заголовок и возможность не указывать принадлежность уже находились в
+профиле вида, но ключ сохранения выбирался отдельными проверками вида,
+а <code>can_omit</code> не использовался при фильтрации. Теперь профиль
+<code>social.json → species[species_id]</code> содержит <code>label</code>, <code>preference</code> и
+<code>can_omit</code>. Штатный выбор и middleware используют этот профиль, а варианты,
+описания и ограничения — тот же каталог <code>get_sierra_social_catalog()</code>.
+Пять генетических каст берутся из существующего <code>skrell.json</code> без копии
+названий и описаний в другом файле.</p>
+<p>Ключи <code>sierra_social</code> и <code>skrell_caste</code> сохранены. Новых обязательных полей,
+профессиональных запретов, изменений цвета и автоматического назначения
+ролей нет. Исторический неизвестный ID остаётся доступен для исправления
+по общим правилам загрузки анкеты; новые значения не заменяют его молча.</p>
+<h2 id="проверки-и-пределы">Проверки и пределы</h2>
+<p><code>sierra_background_social_catalog</code> проверяет профиль, штатный ключ
+персонажа, необязательность, читаемые названия/описания, все утверждённые
+вульпканинские варианты и неизменность пяти каст скреллов.
+<code>sierra_background_social_species_changes</code> проходит по всем нативным ID
+через обычную смену вида и middleware: видимые заголовок/ключ/варианты
+должны соответствовать текущему виду, скрытое поле не должно оставаться
+от предыдущего вида, чужие социальные варианты недоступны.</p>
+<p>Эта таблица фиксирует найденные источники, а не отсутствие любых возможных
+кланов в ещё не опубликованном лоре. Новые названия добавляются после их
+утверждения. Результаты запуска тестов и клиентских сценариев заносятся
+в общий <code>VALIDATION.md</code>; наличие тестового исходника само по себе не
+подтверждает их прохождение.</p></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/TheSameEli/Primera/tree/ebd85cfd06172697b0f1e800b2600d6a81090144">ebd85cf</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.11.0</a></footer></body></html>

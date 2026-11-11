@@ -1,0 +1,140 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../"><link rel="stylesheet" href="dmdoc.css"><title>modular_bandastation/shadow_demon/VALIDATION.md - BandaStation</title></head><body><header><a href="index.html">BandaStation</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>Проверка переноса — 26 октября 2026 <aside>modular_bandastation/shadow_demon/VALIDATION.md</aside> <a href="https://github.com/TheSameEli/Primera/blob/ebd85cfd06172697b0f1e800b2600d6a81090144/modular_bandastation/shadow_demon/VALIDATION.md"><img src="git.png" width="16" height="16" title="modular_bandastation/shadow_demon/VALIDATION.md"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><h2 id="исправления-для-master-primera">Исправления для master Primera</h2>
+<p>Ветка <code>shadow-demon-fixes-master</code> основана на Primera <code>master</code> (<code>51fccaa</code>),
+где порт тенедемона уже присутствует. В неё перенесены исправления из
+<code>1074340ab176afeafd1d7aab3664692db3ec2929</code>.</p>
+<p>Файлы <code>config/</code> не меняются. Кодовые defaults ruleset работают без отдельной
+секции TOML: вес 1, минимум 20 игроков, один кандидат, без повторного выбора.
+Если секция уже существует в конфиге сервера, её значения остаются overrides.
+Изменять конфиг для применения этих исправлений не требуется.</p>
+<p>Свежая проверка новой базы выполнена на BYOND 516.1685 и rust-g 7.0.0:</p>
+<ul>
+<li>Обычная сборка: <strong>0 ошибок / 0 предупреждений</strong>,
+<code>data/pr-validation/master-production-compile.log</code>.</li>
+<li>TGUI production build, CatchUnescapedBrackets и <code>git diff --check</code> прошли;
+TGUI-лог: <code>data/pr-validation/master-tgui-build.log</code>.</li>
+<li><code>test-shadow-demon.ps1 -AuditGarbageCollection -TimeoutSeconds 900</code>:
+<strong>31/31 групп PASS</strong>, exit 0, runtime-ошибок нет, <code>Success!</code>.</li>
+<li>Штатный <code>create_and_destroy</code> проверил все <strong>25 415 типов атомов</strong> и прошёл
+без hard-delete failures. У тестовой сборки 0 ошибок и 4 штатных
+предупреждения UNIT_TESTS.</li>
+<li>Evidence: <code>data/pr-validation/shadow-demon-5b889a518b5e/</code> — шесть файлов
+результатов/логов/отметки завершения и <code>validation-summary.json</code>.</li>
+<li>343 дерева поведения и файл переводов подготовлены штатными генераторами;
+их outputs игнорируются Git. Tracked assets и rust-g DLL не менялись.</li>
+<li>После прогона тестовые junctions отсоединены; diff <code>config/</code> относительно
+базы пуст. Демонстрационная локалка и игровой клиент не запускались.</li>
+</ul>
+<p>Следующие разделы сохраняют историю исходной ветки <code>shadow-demon-bandastation</code>
+и прежней совместной сборки с освещением отдельно от свежего прогона.</p>
+<h2 id="история-регрессии-по-игровому-отчёту-26-октября">История: регрессии по игровому отчёту 26 октября</h2>
+<ul>
+<li>Dynamic: подтверждены кодовые defaults при старом TOML, явные overrides,
+редактирование параметров настоящего ruleset через VV и отказы принудительной
+подготовки без добровольца, opt-in, соединения или при бане. На скриншоте
+<code>Have: 0, Need: 1</code> — штатный отказ отбора. Отдельная секция в серверном
+<code>dynamic.toml</code> не требуется для использования кодовых defaults.</li>
+<li>Урон объектам увеличен до 80; урон персонажам 30 и задержка 2 секунды сохранены.
+Ограничение полёта руки не менялось по решению пользователя.</li>
+<li>Обычный удар, захват и кокон используют штатное выключение зажигалок.
+Проверены шесть типов, перенос в руках, температура и сохранение топлива.</li>
+<li>Кокон подавляет стационарный и повторно включённый свет каждый тик SSobj;
+сварка больше не прерывает обработку остальных целей и звуковой приманки.
+Нажатие Alt+ЛКМ даёт первый звук сразу; периодическое воспроизведение сохраняется.</li>
+<li>Шёпот использует стандартный фиолетовый стиль и курсив; проверки целей
+и однократное HTML-кодирование сохранены.</li>
+<li>Исправлена очистка собственных objectives в тесте Dynamic: перед удалением
+тестового mind снимается ссылка <code>objective.owner</code>. Дополнительный режим
+<code>-AuditGarbageCollection</code> использует полную Runtime Station и штатный
+<code>create_and_destroy</code>; минимальная карта не содержит нужного ему шаттла.</li>
+</ul>
+<p>Прогон исходной ветки с исправлениями <code>1074340</code>: <strong>31/31</strong>,
+включая штатный <code>create_and_destroy</code>, exit 0,
+runtime-ошибок и hard-delete failures нет, <code>clean_run.lk = Success!</code>.
+Evidence: <code>data/pr-validation/shadow-demon-1928485610c1/</code>.
+Совместная сборка с освещением: <strong>46/46</strong>, exit 0, runtime-ошибок нет,
+<code>Success!</code>. Evidence: <code>data/local-playtest/validation/shadow-demon-1ce58228766a/</code>.
+Две обычные сборки прошли с <strong>0 ошибок / 0 предупреждений</strong>; логи
+<code>data/pr-validation/bugs-production-compile.log</code> и
+<code>data/local-playtest/bugs-production-compile.log</code>. Тестовые сборки имеют
+четыре штатных предупреждения UNIT_TESTS. CatchUnescapedBrackets и
+<code>git diff --check</code> пройдены; тестовые junctions отсоединены.</p>
+<p>Демонстрационная локалка остановлена по просьбе пользователя. Автоматические
+проверки используют отдельные скрытые процессы без игрового клиента.
+Реальное прослушивание приманки и доставка шёпота между двумя клиентами
+остаются ручной проверкой. Ниже сохранена история предыдущих прогонов.</p>
+<p>Порт из Paradise-SS220 зафиксирован на <code>0fffca1f1f29a63aff49d9b56524813eedf82c6d</code>.
+Ветка <code>shadow-demon-bandastation</code> основана на BandaStation
+<code>35e3f4bafc3e9e311e5b00f37616b24a9d0e7a0e</code>.
+Среда: BYOND 516.1685, rust-g 7.0.0.</p>
+<h2 id="история-предпочтения-и-dynamic-проверка-25-октября">История: предпочтения и Dynamic — проверка 25 октября</h2>
+<p>Добавлены отдельная карточка «Тенедемон» в «Во время раунда» (Midround)
+и её штатный предпросмотр.
+Новый opt-in изначально выключен; согласие на Sentience не переносится.
+Роль регистрируется через Dynamic и сохраняется обычной системой предпочтений.</p>
+<p>Кодовые настройки ruleset задают тяжёлый мидраунд: вес 1,
+минимум 20 активных игроков, ровно один кандидат, без повторения в раунде.
+Используются обычные расписание, лимиты и паузы heavy-midround текущего уровня
+Dynamic; общие настройки не менялись. Для выбора и создания тела требуется
+тёмный технический тайл с безопасной атмосферой. При отсутствии тайла тело
+не создаётся. Отдельное событие остаётся ручным (<code>weight = 0</code>,
+<code>max_occurrences = 0</code>); событие и флакон используют тот же opt-in.
+Отбор сохраняет баны Shadow Demon, Syndicate и Sentience.</p>
+<ul>
+<li>Обычные сборки PR и локальной интеграции: <strong>0 ошибок / 0 предупреждений</strong>.
+Логи: <code>data/pr-validation/midround-production-compile.log</code> и
+<code>data/local-playtest/midround-production-compile.log</code> соответственно.</li>
+<li>Exact PR suite: <strong>25/25 групп</strong>, exit 0, runtime-ошибок нет, <code>Success!</code>.
+Это 20 групп модуля и штатные <code>organ_sanity</code>, <code>wizard_loadout</code>,
+<code>dynamic_ruleset_sanity</code>, <code>dynamic_unique_antag_flags</code>, <code>dcs_check_list_arguments</code>.
+Evidence: <code>data/pr-validation/shadow-demon-1bfe0b48d5c3/</code>.</li>
+<li>Совместная локалка с исправлением освещения: <strong>41/41 группа</strong>, exit 0,
+runtime-ошибок нет, <code>Success!</code>. Evidence:
+<code>data/local-playtest/validation/shadow-demon-706363df5cef/</code>.</li>
+<li>Новые проверки покрывают регистрацию/переключение предпочтения и preview,
+баны/возраст/отключение клиента, отказ ожившему кандидату, сохранение допуска
+мёртвого тела, ограничения выбора/спавна и отсутствие дубликата роли.</li>
+<li><code>grant_loot()</code> переиспользует статический список сердца: исправлена причина
+прежних CI failures <code>dcs_check_list_arguments</code> на Wawa/Alternate.</li>
+<li>TGUI production build, TypeScript, Biome новой карточки, TOML defaults,
+CatchUnescapedBrackets и <code>git diff --check</code> прошли.</li>
+<li>У тестовых сборок четыре штатных предупреждения UNIT_TESTS; runtime-логи
+проверены отдельно от статусов assertions. После прогона junctions отсоединены.</li>
+</ul>
+<p>Клиентское отображение/сохранение новой карточки и опрос двух реальных клиентов
+остаются ручными сценариями. Ниже сохранена история предыдущих проверок.</p>
+<h2 id="предыдущая-проверка-pr-ветки">Предыдущая проверка PR-ветки</h2>
+<ul>
+<li>Обычная сборка: <strong>0 ошибок, 0 предупреждений</strong>.
+Лог: <code>data/pr-validation/production-compile.log</code>.</li>
+<li><code>tools/shadow_demon/test-shadow-demon.ps1</code>: <strong>18/18 групп</strong> — 16 тестов модуля
+и штатные <code>organ_sanity</code>, <code>wizard_loadout</code>, дополнительно включён контроль
+некорректных emissive-appearance.</li>
+<li>Exit 0, <code>clean_run.lk = Success!</code>, runtime-ошибок нет. Тестовая сборка имеет
+четыре штатных предупреждения UNIT_TESTS.</li>
+<li>Результаты и полные логи: <code>data/pr-validation/shadow-demon-f446143a8821/</code>.</li>
+<li>Тестовая фикстура задаёт raw/cache RGB на всех четырёх углах и совместима
+с исходным расчётом света и отдельным исправлением освещения из PR #2748.</li>
+<li>Extractor проверил <strong>16 ресурсов</strong>, включая оригинальный <code>lightexposure</code>.
+Пиксели, направления и анимации сохранены; десять звуков совпадают побайтово.</li>
+<li>CatchUnescapedBrackets и <code>git diff --check</code> пройдены для изменений.</li>
+</ul>
+<p>Тесты покрывают световой порог и длительность тика, лечение/ожоги в обеих формах,
+инициализацию роли, запрет естественного события, захват и устаревшие callbacks,
+создание/расположение/удаление сегментов руки, carried lights и подавление ламп,
+разрушение фазового носителя, плетение/прерывание кокона, выпадение/пересадку сердца,
+покупку/возврат флакона. Шёпот проверяется на живых разумных целях, в бесплотной
+форме, при непрозрачном препятствии, смене владельца/состояния цели и на однократное
+HTML-кодирование. Наличие состояния спрайта фактического HUD-alert проверяется.</p>
+<p>Изолированная минимальная карта не генерирует шахтёрский уровень и космические
+руины, которые не используются этим набором. После завершения тестов отсоединяются
+только созданные junction; логи и бинарники сохраняются. Защита очистки отдельно
+проверена на сохранение target-файла и отказ для неверных путей/типов/targets.</p>
+<h2 id="совместная-локальная-интеграция">Совместная локальная интеграция</h2>
+<p>На базе BandaStation <code>d3042f54817</code> с исправлением освещения прошли <strong>34/34 группы</strong>:
+те же 18 групп и 16 регрессий освещения. Exit 0, runtime-ошибок нет, <code>Success!</code>.
+Evidence локалки: <code>data/local-playtest/validation/shadow-demon-5a24491eb93f/</code>.
+Это отдельная интеграционная проверка; общий расчёт света находится в PR #2748.</p>
+<p>В ходе локального опробования исправлены HUD-индикатор, слой руки/луча и поиск
+целей шёпота. Онлайн-раунд, доставка между двумя реальными клиентами, фактический
+опрос второго игрока-призрака и нагрузочное профилирование пока не выполнялись.
+Ручные сценарии находятся в <a href="README.md">README.md</a>.</p></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/TheSameEli/Primera/tree/ebd85cfd06172697b0f1e800b2600d6a81090144">ebd85cf</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.11.0</a></footer></body></html>

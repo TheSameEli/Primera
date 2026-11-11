@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../"><link rel="stylesheet" href="dmdoc.css"><title>modular_bandastation/species/VOX_CLOTHING_GAPS.md - BandaStation</title></head><body><header><a href="index.html">BandaStation</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>Пробелы в одежде воксов <aside>modular_bandastation/species/VOX_CLOTHING_GAPS.md</aside> <a href="https://github.com/TheSameEli/Primera/blob/ebd85cfd06172697b0f1e800b2600d6a81090144/modular_bandastation/species/VOX_CLOTHING_GAPS.md"><img src="git.png" width="16" height="16" title="modular_bandastation/species/VOX_CLOTHING_GAPS.md"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>Срез: <strong>2026-10-25</strong> (Europe/Kaliningrad). Проверены начальные worn states
+<strong>2265 видимых типов</strong> после <code>Initialize()</code> во всех 12 категориях.
+У 1223 типов найден видовой state, 1042 используют обычный спрайт (fallback).
+Это типы предметов, включая подтипы с одинаковыми изображениями; новых вещей для вокса не создаётся.</p>
+<table><thead><tr><th>Категория</th><th style="text-align: right">Видимых типов</th><th style="text-align: right">Видовой state есть</th><th style="text-align: right">Fallback</th><th style="text-align: right">NEEDS CONVERTED</th><th style="text-align: right">UNUSED</th><th style="text-align: right">Paradise</th><th style="text-align: right">Paradise просмотрен</th></tr></thead><tbody>
+<tr><td>Головные уборы</td><td style="text-align: right">514</td><td style="text-align: right">238</td><td style="text-align: right">276</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">44</td><td style="text-align: right">44</td></tr>
+<tr><td>Маски</td><td style="text-align: right">135</td><td style="text-align: right">114</td><td style="text-align: right">21</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">0</td></tr>
+<tr><td>Униформа</td><td style="text-align: right">477</td><td style="text-align: right">316</td><td style="text-align: right">161</td><td style="text-align: right">117</td><td style="text-align: right">0</td><td style="text-align: right">67</td><td style="text-align: right">67</td></tr>
+<tr><td>Обувь</td><td style="text-align: right">106</td><td style="text-align: right">81</td><td style="text-align: right">25</td><td style="text-align: right">0</td><td style="text-align: right">1</td><td style="text-align: right">9</td><td style="text-align: right">9</td></tr>
+<tr><td>Верхняя одежда</td><td style="text-align: right">441</td><td style="text-align: right">194</td><td style="text-align: right">247</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">26</td><td style="text-align: right">26</td></tr>
+<tr><td>Очки</td><td style="text-align: right">87</td><td style="text-align: right">69</td><td style="text-align: right">18</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">0</td></tr>
+<tr><td>Гарнитуры</td><td style="text-align: right">2</td><td style="text-align: right">2</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">0</td></tr>
+<tr><td>Перчатки</td><td style="text-align: right">92</td><td style="text-align: right">51</td><td style="text-align: right">41</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">6</td><td style="text-align: right">6</td></tr>
+<tr><td>Шея</td><td style="text-align: right">97</td><td style="text-align: right">6</td><td style="text-align: right">91</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">6</td><td style="text-align: right">6</td></tr>
+<tr><td>Рюкзаки</td><td style="text-align: right">111</td><td style="text-align: right">77</td><td style="text-align: right">34</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">5</td><td style="text-align: right">5</td></tr>
+<tr><td>Пояса</td><td style="text-align: right">143</td><td style="text-align: right">22</td><td style="text-align: right">121</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">0</td></tr>
+<tr><td>Блоки MOD</td><td style="text-align: right">60</td><td style="text-align: right">53</td><td style="text-align: right">7</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">0</td><td style="text-align: right">0</td></tr>
+</tbody></table>
+<p><strong>Наличие state не доказывает правильную форму, цвет или слои.</strong> Столбец «Paradise просмотрен»
+учитывает только явные записи художественного просмотра, а не прохождение теста или название режима <code>reviewed_replacement</code>.
+Последние два столбца входят в число существующих видовых states. Маркеры NEEDS CONVERTED и UNUSED учитываются
+только когда выбран старый помеченный файл; заменённые Paradise состояния повторно не считаются пробелами.</p>
+<p>Из Paradise <code>0fffca1f1f29</code> подключено <strong>180 состояний</strong>
+(включая переключаемые варианты), художественно просмотрено <strong>180</strong>.
+В начальном runtime-срезе выбраны 150 разных импортированных состояний
+для 163 типов; типов с подтверждённым художественным просмотром: 163.
+Доказательство просмотра: Нативная матрица BYOND 516.1685: 22 листа в code/modules/unit_tests/screenshots/vox_appearance_screenshots_paradise_*.png. Каждое состояние показано на существующем предмете с клювами Primalis и Armalis с юга, севера, востока и запада. Четыре стиля оперения под зимним капюшоном и реальные переключения проверены отдельными изображениями. У трёх анимированных состояний просмотрены оба кадра со всех сторон. Проверка относится к этим сценариям и не охватывает все цвета и сочетания одежды.
+Записи просмотра: <a href="../../tools/vox/paradise-art-review.json">paradise-art-review.json</a>.</p>
+<h2 id="что-не-перенесено">Что не перенесено</h2>
+<p>Явно отклонённые состояния из карты переноса (4):</p>
+<ul>
+<li><code>/obj/item/clothing/suit/armor/riot/knight/yellow</code> / <code>knight_yellow</code> — На видах сбоку появляется второй хвост: он уже нарисован в броне Paradise, а предмет TG не скрывает хвост вокса.</li>
+<li><code>/obj/item/clothing/suit/armor/riot/knight</code> / <code>knight_green</code> — На видах сбоку появляется второй хвост: он уже нарисован в броне Paradise, а предмет TG не скрывает хвост вокса.</li>
+<li><code>/obj/item/clothing/suit/armor/riot/knight/red</code> / <code>knight_red</code> — На видах сбоку появляется второй хвост: он уже нарисован в броне Paradise, а предмет TG не скрывает хвост вокса.</li>
+<li><code>/obj/item/clothing/suit/armor/riot/knight/blue</code> / <code>knight_blue</code> — На видах сбоку появляется второй хвост: он уже нарисован в броне Paradise, а предмет TG не скрывает хвост вокса.</li>
+</ul>
+<p>Маски Paradise не подключены: их посадка отличается от текущего клюва; используются имеющиеся маски Nova.
+Готовые цветные картинки не заменяют неподдержанные GAGS-семейства, чтобы сохранить выбранный цвет.</p>
+<p>Оставшиеся реальные пробелы текущей сборки (1160 типов, включая явно отклонённые,
+если они попали в начальную выборку):</p>
+<ul>
+<li>в поддерживаемом GAGS нет нужного состояния: <strong>3</strong>. Примеры: meown shoes (<code>meown_shoes</code>); work boots (<code>workboots</code>); whitre skirt (<code>white_skirt</code>).</li>
+<li>не найден подходящий видовой worn state: <strong>846</strong>. Примеры: Nanotrasen banner backpack (<code>backpack-banner</code>); blue banner backpack (<code>backpack-banner_blue</code>); red banner backpack (<code>backpack-banner_red</code>).</li>
+<li>выбран исходный state после NEEDS CONVERTED: <strong>117</strong>. Примеры: alien jumpsuit (<code>abductor</code>); black skirt (<code>black_skirt</code>); blue skirt (<code>blue_skirt</code>).</li>
+<li>выбран исходный state после UNUSED: <strong>1</strong>. Примеры: морозные ботинки (<code>JackFrostShoes</code>).</li>
+<li>нет совместимой конфигурации GAGS для вокса: <strong>193</strong>. Примеры: шапка (<code>beanie</code>); black beanie (<code>beanie</code>); test subject beanie (<code>beanie</code>).</li>
+</ul>
+<p>Причины указаны без предположения, что одноимённая картинка из другого файла подходит этой вещи.
+Fallback сохраняет обычный спрайт; его посадка на воксе не подтверждена этим отчётом.
+Дополнительно исключённых из видимой выборки типов: 72; причины и полный перечень сохранены в JSON.</p>
+<p>Полный построчный список: <a href="../../tools/vox/clothing-gaps.csv">clothing-gaps.csv</a>.
+Счётчики, исходные blob-хэши, конкретные исключения и границы проверки:
+<a href="../../tools/vox/clothing-gaps-summary.json">clothing-gaps-summary.json</a>.
+Этот срез не охватывает все переключения, цвета и сочетания одежды. Результаты native-тестов и визуальная матрица
+описаны отдельно в <a href="VOX_VALIDATION.md">VOX_VALIDATION.md</a>.</p>
+<p>Перегенерация из результата нового прогона:</p>
+<pre><code class="language-powershell">python tools/vox/report_clothing_gaps.py tmp/vox-test-&lt;run&gt;/data/vox-clothing-inventory.json --art-review tools/vox/paradise-art-review.json
+</code></pre></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/TheSameEli/Primera/tree/ebd85cfd06172697b0f1e800b2600d6a81090144">ebd85cf</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.11.0</a></footer></body></html>

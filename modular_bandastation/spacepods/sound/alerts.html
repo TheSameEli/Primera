@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../../"><link rel="stylesheet" href="dmdoc.css"><title>modular_bandastation/spacepods/sound/alerts/README.md - BandaStation</title></head><body><header><a href="index.html">BandaStation</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>Голосовые предупреждения пода <aside>modular_bandastation/spacepods/sound/alerts/README.md</aside> <a href="https://github.com/TheSameEli/Primera/blob/ebd85cfd06172697b0f1e800b2600d6a81090144/modular_bandastation/spacepods/sound/alerts/README.md"><img src="git.png" width="16" height="16" title="modular_bandastation/spacepods/sound/alerts/README.md"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>Оригинальные фразы для бортового компьютера синтезированы локально установленным
+системным голосом <strong>Microsoft Irina Desktop</strong> (<code>ru-RU</code>) через
+<code>System.Speech.Synthesis.SpeechSynthesizer</code>: <code>Rate = 0</code>, <code>Volume = 100</code>, вывод
+<code>SetOutputToWaveFile</code>. Сетевые службы и сторонние аудиозаписи не использовались;
+файлы самого голоса Microsoft в репозиторий не включены.</p>
+<p>Кодирование существующим FFmpeg: OGG Vorbis (<code>libvorbis</code>, quality 4), mono,
+22050 Hz; фильтры <code>highpass=f=150,lowpass=f=5500,loudnorm=I=-18:TP=-1.5:LRA=7</code>.
+После декодирования проверены ненулевой RMS, отсутствие клиппинга и длительность
+каждой записи менее шести секунд.</p>
+<table><thead><tr><th>Файл</th><th>Текст</th></tr></thead><tbody>
+<tr><td><code>battery_low.ogg</code></td><td>Внимание. Низкий заряд батареи.</td></tr>
+<tr><td><code>battery_critical.ogg</code></td><td>Критический уровень электропитания. Проверьте батарею.</td></tr>
+<tr><td><code>oxygen_low.ogg</code></td><td>Внимание. Снижается уровень кислорода.</td></tr>
+<tr><td><code>oxygen_critical.ogg</code></td><td>Опасный уровень кислорода. Проверьте подачу воздуха.</td></tr>
+<tr><td><code>reserve_low.ogg</code></td><td>Низкий запас кислорода в резервном баллоне.</td></tr>
+<tr><td><code>hull_low.ogg</code></td><td>Корпус повреждён. Требуется ремонт.</td></tr>
+<tr><td><code>hull_critical.ogg</code></td><td>Внимание. Критические повреждения корпуса.</td></tr>
+</tbody></table></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/TheSameEli/Primera/tree/ebd85cfd06172697b0f1e800b2600d6a81090144">ebd85cf</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.11.0</a></footer></body></html>

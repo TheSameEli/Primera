@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../../"><link rel="stylesheet" href="dmdoc.css"><title>modular_bandastation/species/VOX_VALIDATION.md - BandaStation</title></head><body><header><a href="index.html">BandaStation</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>Проверки независимого порта Vox <aside>modular_bandastation/species/VOX_VALIDATION.md</aside> <a href="https://github.com/TheSameEli/Primera/blob/ebd85cfd06172697b0f1e800b2600d6a81090144/modular_bandastation/species/VOX_VALIDATION.md"><img src="git.png" width="16" height="16" title="modular_bandastation/species/VOX_VALIDATION.md"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>Дата: 25 октября 2026. База BandaStation: <code>35e3f4bafc3e9e311e5b00f37616b24a9d0e7a0e</code>.
+Общие исправления запуска и Windows runtime включены из <code>species-runtime-shared</code>
+на <code>2568eea248c2bc626c46248a5da83c8c2c86d85d</code>. В истории и коде этого порта нет
+зависимости от порта IPC.</p>
+<h2 id="исправления-после-раунда-с-игроками">Исправления после раунда с игроками</h2>
+<p>Пользователь сообщил о небольшом игровом тесте и посмертном гниении воксов.
+Исправление <code>TRAIT_NODECAY</code> сохраняет органический биотип и обычную
+восприимчивость к болезням, но предотвращает инфекционный rot-компонент
+и посмертный распад установленных органов. Смена расы, несколько источников
+признака, извлечение и пересадка органов проверены отдельно. Уже накопленный
+урон автоматически не лечится; снятые органы снова портятся обычным образом.</p>
+<p>Добавлены <code>*quill</code> / <code>*quills</code> и <code>*click</code> / <code>*clicks</code> с русскими именами,
+направленными сообщениями и двумя точными звуками Paradise. Щелчок адаптирован
+из эмоции киданов; их способности не переносятся. Новый признак <code>vocal</code>
+по умолчанию сохраняет прежнее поведение остальных эмоций. У двух физических
+эмоций он выключен: язык и голос не нужны. Намордник не подавляет перья,
+но фиксирует клюв; обычная маска вокса позволяет оба звука.</p>
+<p>Повторный независимый прогон: <strong><code>tmp/vox-test-74efbc690576</code></strong>.</p>
+<ul>
+<li><strong>53/53 исполняемых теста PASS</strong>, 55 выбранных типов с двумя <code>focus_only/*</code>.</li>
+<li><strong>88/88 PNG PASS</strong>, без изменения эталонов; driver и DreamDaemon exit <strong>0</strong>,
+<code>clean_run.lk</code>: <strong>Success!</strong>, runtime errors <strong>0</strong> во всех трёх сырых журналах.</li>
+<li>Восемь новых тестов: четыре на распад и четыре на команды/чат/псевдонимы,
+панель, органы, сознание, обычные маски и оба вида намордника.
+Дополнительно выполнен штатный <code>emoting</code> для обычных персонажей.</li>
+<li>Распад проверяется через настоящие <code>death()</code> / <code>Life()</code> с интервалами до
+45 минут. Это детерминированная модель времени обработки органов,
+а не 45-минутный живой прогон и не перемотка <code>world.time</code>.</li>
+<li>Штатная игровая сборка BYOND 516.1685: <strong>0 ошибок и 0 предупреждений</strong>,
+<code>tmp/vox-feedback-build.log</code>. Тестовая — четыре прежних предупреждения.</li>
+<li>Dreamchecker: <strong>0 diagnostics</strong>, <code>tmp/vox-feedback-dreamchecker.log</code>.</li>
+<li>Проверены прежние <strong>32 DMI / 3348 состояний / 14402 кадра</strong> и <strong>5/5 звуков</strong>
+с pinned blob/SHA256, <code>tmp/vox-feedback-assets.log</code>.</li>
+<li>Штатные define sanity, trait validity и оба ticked-file enforcement — PASS.
+Линтеры выполнены на копии отслеживаемых исходников, чтобы сохранённые
+развёртывания в игнорируемом <code>tmp/</code> не попадали в поиск. Логи:
+<code>tmp/vox-feedback-lint-*.log</code>.</li>
+</ul>
+<p>Первый тестовый compile выявил две неверные <code>PROC_REF</code> у наследуемых
+обработчиков fixture. Они заменены на <code>TYPE_PROC_REF</code> с объявляющим родителем;
+повторный полный прогон выше успешен. Игровой код при этом не менялся.</p>
+<p>Новая версия после исправлений ещё не перепроверена игроками; слышимость
+эмоций соседним клиентом входит в ручной сценарий в <a href="VOX_PORT.md">VOX_PORT.md</a>.
+Прежние проверки инфраструктуры и TGUI ниже не запускались повторно:
+соответствующий код в этом обновлении не менялся.</p>
+<h2 id="сборка-и-исполняемые-проверки">Сборка и исполняемые проверки</h2>
+<p>Штатная команда <code>bun tools/build/build.ts build</code> успешно собрала переводы,
+behavior trees, icon-cutter, шрифты, TGUI и обычный <code>tgstation.dmb</code>:
+<strong>0 ошибок, 0 предупреждений</strong>, BYOND <strong>516.1685</strong>.</p>
+<pre><code class="language-powershell">tools/vox/test-vox.ps1 -ByondBin '&lt;BYOND&gt;/bin' -IncludeHumanoidScreenshots -TimeoutSeconds 600
+</code></pre>
+<p>Прогон при первоначальном разделении портов: <code>tmp/vox-test-76fdfbfd9911</code>.</p>
+<ul>
+<li><strong>44/44 исполняемых DM-теста PASS</strong>; выбраны 46 типов, включая два служебных
+<code>focus_only/*</code>, у которых нет отдельного результата <code>Run()</code>.</li>
+<li><strong>88/88 PNG</strong> прошли штатное сравнение без обновления эталонов.</li>
+<li>Код завершения <code>dd.exe</code>: <strong>0</strong>; <code>clean_run.lk</code>: <strong>Success!</strong>.</li>
+<li><strong>0 runtime errors</strong> в <code>dd.log</code>, <code>runtime.log.json</code> и <code>console.log</code>;
+все ожидаемые логи, результаты тестов и изображения присутствуют.</li>
+<li>В локальном наборе явно включён <code>focus_only/invalid_emissives</code>, поэтому
+ошибочные состояния отражающих масок проверяются как на полном CI-прогоне.</li>
+</ul>
+<p>Тестовая компиляция: 0 ошибок и четыре стандартных предупреждения этой
+UNIT_TESTS-конфигурации: REFERENCE_TRACKING, loop_checks и две неиспользуемые
+переменные выбора тестовой карты. Обычная игровая компиляция предупреждений не имеет.</p>
+<p>Проверены смена расы и органы, азотное дыхание и кислородная токсичность,
+жизнеобеспечение при выдаче профессии, EMP установленного и извлечённого
+мозгового стека, питание электроникой и отмена укуса при краже, удалении,
+смене расы и callbacks. Отдельные проверки подтверждают сохранение исходного
+флага debris после незаконченного укуса и наличие крови Vox в фактически
+созданных cargo-контейнере и медицинском морозильнике.</p>
+<p>Два нейтральных исправления нужны автономному порту: <code>TakeBite</code> повторно
+проверяет <code>CanConsume</code> до укуса и после food callbacks; EMP кибернетического
+мозга проверяет наличие владельца перед применением статусов. Механики IPC
+для этого не подключаются.</p>
+<h2 id="спрайты-и-происхождение-ресурсов">Спрайты и происхождение ресурсов</h2>
+<ul>
+<li>Nova: <strong>32 DMI, 3348 состояний, 14402 кадра</strong> прошли <code>check_assets.py</code>.</li>
+<li>Paradise: <strong>180 wearable states</strong>, включая 14 доработанных зимних капюшонов,
+и <strong>5 auxiliary states</strong> воспроизводятся в десяти DMI; проверены пиксели,
+направления, анимационные metadata и pinned blobs. Отклонены <strong>18</strong> случаев
+некорректного ввода, включая устаревший лишний выходной DMI.</li>
+<li>Прежние 180 mappings и их wearable RGBA/metadata не изменены. Дополнительно
+созданы четыре отражающие маски: <code>hood_engineer-emissive</code>,
+<code>hood_atmos-emissive</code>, <code>secjacket-emissive</code>, <code>cone-emissive</code>.</li>
+<li>Их native RGBA и metadata сохранены; альфа умножается на альфу fitted-одежды.
+Pixel-тесты проверяют точное пересечение, а actual <code>worn_overlays</code>-тест —
+существование выбранного файла/state и ровно одну отражающую маску.</li>
+<li>Контактный лист normal/magenta-mask просмотрен для всех четырёх предметов
+со всех четырёх сторон: отражающие пиксели остаются внутри одежды.
+Нулевая южная маска капюшонов сохранена из native artwork.</li>
+<li>Native-источники и blob hashes добавлены в <code>paradise-source-assets.json</code>,
+рецепты — в <code>paradise-clothing-map.json</code>, происхождение и CC BY-SA 3.0 —
+в <code>icons/bandastation/mob/species/vox/paradise/attributions.txt</code>.</li>
+</ul>
+<p>Нативные PNG также покрывают оба клюва, направления, MOD, GAGS,
+подвёрнутую униформу, переключаемую одежду, лампы и маскирование перьев.
+Свежий отчёт <a href="VOX_CLOTHING_GAPS.md">о пробелах одежды</a> построен по inventory
+финального прогона: 2265 видимых типов, 180 reviewed Paradise states.
+Подробный отчёт не означает проверки всех комбинаций одежды и расцветок.</p>
+<h2 id="tgui-и-отдельный-жизненный-цикл">TGUI и отдельный жизненный цикл</h2>
+<p>TypeScript: exit 0. TGUI: <strong>25/25 тестов</strong>, <strong>40 assertions</strong>, 0 failures,
+exit 0. Логи: <code>tmp/split-tgui-tsc.log</code>, <code>tmp/split-tgui-tests.log</code>.
+После этих проверок UI-код не менялся.</p>
+<p>Dreamchecker после последних исправлений <code>TakeBite</code> и EMP: <strong>0 diagnostics</strong>,
+exit 0; лог <code>tmp/split-dreamchecker-final.log</code>.</p>
+<p>Обычный сервер без <code>UNIT_TESTS</code> прошёл <strong>4/4 сценария</strong> через
+<code>tools/vox/test-server-lifecycle.ps1</code>: закрытие и перезапуск мира с/без <code>-close</code>.
+Артефакты: <code>tmp/server-lifecycle-5519a3b48f17</code>, лог <code>tmp/vox-lifecycle-final.log</code>.
+Manifest: <code>status=passed</code>, <code>success=true</code>; driver и все четыре native-процесса
+завершились с кодом <strong>0</strong>, без timeout и принудительного завершения.</p>
+<p>Подтверждены восемь эпох мира, четыре настоящих <code>world.Reboot()</code> в прежних PID,
+147 инициализированных подсистем включая test probe, работа MC и таймеров.
+Cyber-регрессии: <strong>8/8</strong>, операции с отсутствующими space areas: <strong>24/24</strong>.
+В сырых журналах — <strong>0 runtime errors</strong>, в Windows event audit — <strong>0 faults</strong>,
+ошибок запроса и нераспознанных событий нет. Обычная fixture-компиляция:
+<strong>0 ошибок и 0 предупреждений</strong>. Проверка использует минимальную станцию,
+выключенный Hub, без SQL и TGS. Происхождение и проверки Windows-библиотеки:
+<a href="../../tools/rustg/VALIDATION.md">tools/rustg/VALIDATION.md</a>.</p></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/TheSameEli/Primera/tree/ebd85cfd06172697b0f1e800b2600d6a81090144">ebd85cf</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.11.0</a></footer></body></html>
